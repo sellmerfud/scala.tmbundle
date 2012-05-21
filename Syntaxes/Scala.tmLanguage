@@ -437,6 +437,23 @@
 						<key>2</key>
 						<dict>
 							<key>name</key>
+							<string>constant.other.declaration.scala</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>\b(val)\s+(?:([A-Z][_a-zA-Z0-9]*))\b</string>
+				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.declaration.stable.scala</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
 							<string>keyword.declaration.volatile.scala</string>
 						</dict>
 						<key>3</key>
