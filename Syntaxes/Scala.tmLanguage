@@ -438,7 +438,7 @@
 						<key>3</key>
 						<dict>
 							<key>name</key>
-							<string>entity.name.val.declaration</string>
+							<string>variable.other.declaration.scala</string>
 						</dict>
 					</dict>
 					<key>match</key>
