@@ -12,6 +12,8 @@
 	<dict>
 		<key>decreaseIndentPattern</key>
 		<string>(?x)^ (.*\*/)? \s* [)}] [;\s]* (//.*|/\*.*\*/\s*)? $</string>
+		<key>disableIndentCorrections</key>
+		<true/>
 		<key>increaseIndentPattern</key>
 		<string>(?x)^ .* [({] [^)}"']* $</string>
 		<key>indentNextLinePattern</key>
