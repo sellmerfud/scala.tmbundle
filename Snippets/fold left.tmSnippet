@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>foldLeft(${1:0}) { (${2:accum}, ${3:n}) =&gt; $4 }</string>
+	<key>name</key>
+	<string>fold left</string>
+	<key>scope</key>
+	<string>source.scala</string>
+	<key>tabTrigger</key>
+	<string>foldl</string>
+	<key>uuid</key>
+	<string>A3557E0A-4AC5-4284-8B27-E55F48183E44</string>
+</dict>
+</plist>

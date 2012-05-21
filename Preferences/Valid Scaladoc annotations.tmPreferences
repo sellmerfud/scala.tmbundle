@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>name</key>
+	<string>Valid Scaladoc annotations</string>
+	<key>scope</key>
+	<string>comment.block.documentation.scala</string>
+	<key>settings</key>
+	<dict>
+		<key>completions</key>
+		<array>
+			<string>author</string>
+			<string>version</string>
+			<string>param</string>
+			<string>tparam</string>
+			<string>return</string>
+			<string>exception</string>
+			<string>see</string>
+			<string>since</string>
+			<string>serial</string>
+			<string>deprecated</string>
+		</array>
+	</dict>
+	<key>uuid</key>
+	<string>37AD8061-D284-4D24-A6C2-A641197D5CC2</string>
+</dict>
+</plist>
