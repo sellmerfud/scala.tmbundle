@@ -154,6 +154,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#special-identifier</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#char-literal</string>
 				</dict>
 				<dict>
@@ -768,6 +772,17 @@
 			<string>'\w+(?=[^'\w])</string>
 			<key>name</key>
 			<string>entity.name.symbol</string>
+		</dict>
+		<key>special-identifier</key>
+		<dict>
+			<key>comment</key>
+			<string>
+		    Match special scala style identifiers that can end with and underscore and
+		    a a not letter such as blank_?.  This way the symbol will not be colored
+		    differently.
+		  </string>
+			<key>match</key>
+			<string>\b[_$a-zA-Z][_$a-zA-Z0-9]*(?:_[^\t .,;()\[\]{}'"`\w])</string>
 		</dict>
 		<key>storage-modifiers</key>
 		<dict>
