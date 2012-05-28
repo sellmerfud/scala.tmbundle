@@ -541,8 +541,16 @@
 					<string>#comments</string>
 				</dict>
 				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.import</string>
+						</dict>
+					</dict>
 					<key>match</key>
-					<string>([^\s{;.]+)\s*\.\s*</string>
+					<string>(?:[^\s{;.]+)\s*(\.)\s*</string>
 					<key>name</key>
 					<string>variable.package.scala</string>
 				</dict>
