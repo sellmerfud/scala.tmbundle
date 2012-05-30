@@ -541,24 +541,16 @@
 					<string>#comments</string>
 				</dict>
 				<dict>
-					<key>captures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.import</string>
-						</dict>
-					</dict>
-					<key>match</key>
-					<string>(?:[^\s{;.]+)\s*(\.)\s*</string>
-					<key>name</key>
-					<string>variable.package.scala</string>
-				</dict>
-				<dict>
 					<key>match</key>
 					<string>([^\s{;.]+)\s*</string>
 					<key>name</key>
 					<string>variable.import.scala</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\.</string>
+					<key>name</key>
+					<string>punctuation.definition.import</string>
 				</dict>
 				<dict>
 					<key>begin</key>
@@ -606,10 +598,10 @@
 							</dict>
 							<key>match</key>
 							<string>(?x) \s*
-				([^\s.,}]+) \s*
-				(=&gt;) \s*
-				([^\s.,}]+) \s*
-			  </string>
+				      ([^\s.,}]+) \s*
+				      (=&gt;) \s*
+				      ([^\s.,}]+) \s*
+			        </string>
 						</dict>
 						<dict>
 							<key>match</key>
