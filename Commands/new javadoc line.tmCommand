@@ -20,20 +20,28 @@ start = chars.slice(0,startColumn)
 rest  = chars.slice(startColumn, endColumn)
 
 print start
-print "\n" + space + "*\t"+rest.to_s+ "$0"</string>
+print "\n" + space + "* "+rest.to_s+ "$0"</string>
 	<key>fallbackInput</key>
 	<string>line</string>
 	<key>input</key>
 	<string>selection</string>
+	<key>inputFormat</key>
+	<string>text</string>
 	<key>keyEquivalent</key>
 	<string>$</string>
 	<key>name</key>
 	<string>new javadoc line</string>
-	<key>output</key>
-	<string>insertAsSnippet</string>
+	<key>outputCaret</key>
+	<string>afterOutput</string>
+	<key>outputFormat</key>
+	<string>snippet</string>
+	<key>outputLocation</key>
+	<string>replaceInput</string>
 	<key>scope</key>
 	<string>comment.block.documentation.scala</string>
 	<key>uuid</key>
 	<string>701CC71E-0CB8-4C5C-922B-F363193B4AAF</string>
+	<key>version</key>
+	<integer>2</integer>
 </dict>
 </plist>
