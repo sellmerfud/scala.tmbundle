@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/env ruby -wKU
+
+# Save:   Nothing
+# Input:  Document
+# Output: Replace Input
+# Caret Placement: Line Interpolation
+
+
+COCOA_DIALOG_COMMAND = "#{ENV["TM_SUPPORT_PATH"]}/bin/CocoaDialog.app/Contents/MacOS/CocoaDialog"
+
+def get_var_name
+  options = 'standard-inputbox --float --title "Variable Name" --focus-textbox --editable --text foo --informative-text "Enter a name for the variable"'
+  dialog_command = "\"#{COCOA_DIALOG_COMMAND}\" #{options}"
+  results = `#{dialog_command}`.split
+  results[0] == '1' &amp;&amp; !results[1].nil? ? results[1].strip : nil
+end
+
+lines = STDIN.readlines()
+result = lines  # no change by default
+
+if ENV.member?("TM_SELECTED_TEXT")
+  var_name = get_var_name
+  if (var_name)
+    # selection is in format line:col-line:col eg: 5:3-5:15
+    # beware that the start of selection may be after the end of selection if the
+    # selection was made from right to left (or bottom to top)
+    l1, c1, l2, c2 = ENV["TM_SELECTION"].split('-').map {|x| x.split(':') }.flatten.map {|x| x.to_i - 1 }
+    if l1 &gt; l2
+      l1, l2 = l2, l1
+      c1, c2 = c2, c1
+    elsif l1 == l2 &amp;&amp; c1 &gt; c2
+      c1, c2 = c2, c1
+    end
+  
+    # Get the indention of the line at the start of the selection.
+    indent = lines[l1].match(/^\s*/).to_s
+    var_prefix = "var #{var_name} = "
+    indent2 = indent + (" " * var_prefix.length)
+    selection = ENV["TM_SELECTED_TEXT"].strip.split("\n")
+    var_value = selection.first + "\n" + selection.drop(1).map {|s| indent2 + s.lstrip + "\n"}.join
+    var_decl = indent + var_prefix + var_value
+    replaced_selection = lines[l1][0...c1] + var_name + lines[l2][c2..-1]
+    
+    result = lines[0...l1]
+    result += [var_decl, replaced_selection]
+    result += lines[l2+1..-1]
+  end
+end  
+
+print result
+</string>
+	<key>input</key>
+	<string>document</string>
+	<key>inputFormat</key>
+	<string>text</string>
+	<key>keyEquivalent</key>
+	<string>^v</string>
+	<key>name</key>
+	<string>var-from-selection</string>
+	<key>outputCaret</key>
+	<string>interpolateByLine</string>
+	<key>outputFormat</key>
+	<string>text</string>
+	<key>outputLocation</key>
+	<string>replaceInput</string>
+	<key>scope</key>
+	<string>source.scala dyn.selection.continuous</string>
+	<key>uuid</key>
+	<string>B264B8AE-7EBD-413A-94B7-E305C5491CFC</string>
+	<key>version</key>
+	<integer>2</integer>
+</dict>
+</plist>
