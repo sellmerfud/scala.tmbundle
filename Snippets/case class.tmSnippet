@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>case class ${1:ClassName}${2:(${3:param}: ${4:Type})}$0</string>
+	<string>case class ${1:ClassName}(${2:${3:param}: ${4:Type}})$0</string>
 	<key>name</key>
 	<string>case class</string>
 	<key>scope</key>

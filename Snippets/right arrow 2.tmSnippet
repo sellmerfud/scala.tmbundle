@@ -9,7 +9,7 @@
 	<key>scope</key>
 	<string>source.scala</string>
 	<key>tabTrigger</key>
-	<string>-&gt;</string>
+	<string>--&gt;</string>
 	<key>uuid</key>
 	<string>BBBB29D0-B668-4BE4-B89C-C2CFFE8CC73D</string>
 </dict>

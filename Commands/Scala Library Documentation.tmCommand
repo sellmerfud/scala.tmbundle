@@ -5,23 +5,34 @@
 	<key>beforeRunningCommand</key>
 	<string>nop</string>
 	<key>command</key>
-	<string>if [[ "${SCALA_DOC}" ]]
-    then echo "&lt;meta http-equiv='Refresh' content='0;URL=file://$SCALA_DOC/api/index.html'&gt;"
+	<string>#!/usr/bin/env bash
+[[ -f "${TM_SUPPORT_PATH}/lib/bash_init.sh" ]] &amp;&amp; . "${TM_SUPPORT_PATH}/lib/bash_init.sh"
+
+if [[ "${SCALA_DOC}" ]]
+    then echo "&lt;meta http-equiv='Refresh' content='0;URL=file://$SCALA_DOC/index.html'&gt;"
     else echo "&lt;meta http-equiv='Refresh' content='0;URL=http://www.scala-lang.org/api/current/index.html'&gt;"
 fi</string>
 	<key>fallbackInput</key>
 	<string>none</string>
 	<key>input</key>
 	<string>selection</string>
+	<key>inputFormat</key>
+	<string>text</string>
 	<key>keyEquivalent</key>
 	<string>^h</string>
 	<key>name</key>
 	<string>Scala Library Documentation</string>
-	<key>output</key>
-	<string>showAsHTML</string>
+	<key>outputCaret</key>
+	<string>afterOutput</string>
+	<key>outputFormat</key>
+	<string>html</string>
+	<key>outputLocation</key>
+	<string>newWindow</string>
 	<key>scope</key>
 	<string>source.scala</string>
 	<key>uuid</key>
 	<string>FE33460A-1416-47B5-A76B-75BBFA2398F8</string>
+	<key>version</key>
+	<integer>2</integer>
 </dict>
 </plist>

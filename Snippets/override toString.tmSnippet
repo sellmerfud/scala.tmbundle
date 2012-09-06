@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>override def toString = $0</string>
+	<string>override def toString() = $0</string>
 	<key>name</key>
 	<string>override toString</string>
 	<key>scope</key>

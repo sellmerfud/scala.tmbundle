@@ -10,8 +10,6 @@
 	<string>single quote</string>
 	<key>scope</key>
 	<string>source.scala</string>
-	<key>tabTrigger</key>
-	<string>'</string>
 	<key>uuid</key>
 	<string>5167F793-78AE-48A3-9C8E-779085477E69</string>
 </dict>
