@@ -41,11 +41,11 @@ if ENV.member?("TM_SELECTED_TEXT")
   
     # Get the indention of the line at the start of the selection.
     indent = lines[l1].match(/^\s*/).to_s
-    var_prefix = "var #{var_name} = "
-    indent2 = indent + (" " * var_prefix.length)
+    val_prefix = "val #{var_name} = "
+    indent2 = indent + (" " * val_prefix.length)
     selection = ENV["TM_SELECTED_TEXT"].strip.split("\n")
     var_value = selection.first + "\n" + selection.drop(1).map {|s| indent2 + s.lstrip + "\n"}.join
-    var_decl = indent + var_prefix + var_value
+    var_decl = indent + val_prefix + var_value
     replaced_selection = lines[l1][0...c1] + var_name + lines[l2][c2..-1]
     
     result = lines[0...l1]
@@ -75,6 +75,6 @@ print result
 	<key>uuid</key>
 	<string>B264B8AE-7EBD-413A-94B7-E305C5491CFC</string>
 	<key>version</key>
-	<integer>2</integer>
+	<string>2</string>
 </dict>
 </plist>
