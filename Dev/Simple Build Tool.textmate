@@ -1,0 +1,18 @@
+{	patterns = (
+		{	match = '(\w*)\s+(?=.*=)';
+			captures = { 1 = { name = 'entity.name.setting.sbt'; }; };
+		},
+		{	name = 'keyword.sbt';
+			match = '\b(at)\b';
+		},
+		{	name = 'string.quoted.double.sbt';
+			begin = '"';
+			end = '"';
+			patterns = (
+				{	name = 'constant.character.escape.untitled';
+					match = '\\.';
+				},
+			);
+		},
+	);
+}

@@ -1,0 +1,449 @@
+{	patterns = ( { include = '#code'; } );
+	repository = {
+		block-comments = {
+			name = 'comment.block.scala';
+			begin = '/\*';
+			end = '\*/';
+			patterns = (
+				{	include = '#block-comments'; },
+				{	match = '(?x)
+			(?! /\*)
+			(?! \*/)
+		  '; },
+			);
+		};
+		char-literal = {
+			name = 'constant.character.literal.scala';
+			begin = "'";
+			end = "'";
+			beginCaptures = { 0 = { name = 'punctuation.definition.character.begin.scala'; }; };
+			endCaptures = { 0 = { name = 'punctuation.definition.character.end.scala'; }; };
+			patterns = (
+				{	name = 'constant.character.escape.scala';
+					match = '\\(?:[btnfr\\"'']|[0-7]{1,3}|u[0-9A-Fa-f]{4})';
+				},
+				{	name = 'invalid.illegal.unrecognized-character-escape.scala';
+					match = '\\.';
+				},
+				{	name = 'invalid.illegal.character-literal-too-long';
+					match = "[^']{2,}";
+				},
+				{	name = 'invalid.illegal.character-literal-too-long';
+					match = "(?<!')[^']";
+				},
+			);
+		};
+		code = {
+			patterns = (
+				{	include = '#storage-modifiers'; },
+				{	include = '#declarations'; },
+				{	include = '#inheritance'; },
+				{	include = '#imports'; },
+				{	include = '#comments'; },
+				{	include = '#block-comments'; },
+				{	include = '#strings'; },
+				{	include = '#initialization'; },
+				{	include = '#xml-literal'; },
+				{	include = '#keywords'; },
+				{	include = '#constants'; },
+				{	include = '#scala-symbol'; },
+				{	include = '#special-identifier'; },
+				{	include = '#char-literal'; },
+				{	include = '#empty-parentheses'; },
+				{	include = '#parameter-list'; },
+				{	include = '#qualifiedClassName'; },
+				{	include = '#meta-brackets'; },
+				{	include = '#meta-bounds'; },
+				{	include = '#meta-colons'; },
+			);
+		};
+		comments = {
+			patterns = (
+				{	name = 'comment.block.empty.scala';
+					match = '/\*\*/';
+					captures = { 0 = { name = 'punctuation.definition.comment.scala'; }; };
+				},
+				{	name = 'comment.block.documentation.scala';
+					begin = '^\s*(/\*\*)';
+					end = '\*/';
+					beginCaptures = { 1 = { name = 'punctuation.definition.comment.scala'; }; };
+					endCaptures = { 0 = { name = 'punctuation.definition.comment.scala'; }; };
+					patterns = (
+						{	match = '(@param)\s+(\S+)';
+							captures = {
+								1 = { name = 'keyword.other.documentation.scaladoc.scala'; };
+								2 = { name = 'variable.parameter.scala'; };
+							};
+						},
+						{	match = '(@(?:tparam|throws))\s+(\S+)';
+							captures = {
+								1 = { name = 'keyword.other.documentation.scaladoc.scala'; };
+								2 = { name = 'entity.name.class'; };
+							};
+						},
+						{	name = 'keyword.other.documentation.scaladoc.scala';
+							match = '@(return|see|note|example|usecase|author|version|since|todo|deprecated|migration|define|inheritdoc)\b';
+						},
+						{	match = '(\[\[)([^\]]+)(\]\])';
+							captures = {
+								1 = { name = 'punctuation.definition.documentation.link.scala'; };
+								2 = { name = 'entity.other.documentation.link.scala'; };
+								3 = { name = 'punctuation.definition.documentation.link.scala'; };
+							};
+						},
+					);
+				},
+				{	name = 'comment.block.scala';
+					begin = '/\*';
+					end = '\*/';
+					captures = { 0 = { name = 'punctuation.definition.comment.scala'; }; };
+				},
+				{	match = '\s*((//).*$)';
+					captures = {
+						1 = { name = 'comment.line.double-slash.scala'; };
+						2 = { name = 'punctuation.definition.comment.scala'; };
+					};
+				},
+			);
+		};
+		constants = {
+			patterns = (
+				{	name = 'constant.language.scala';
+					match = '\b(false|null|true|Nil|None)\b';
+				},
+				{	name = 'constant.numeric.scala';
+					match = '\b((0(x|X)[0-9a-fA-F]*)|(([0-9]+\.?[0-9]*)|(\.[0-9]+))((e|E)(\+|-)?[0-9]+)?)([LlFfUuDd]|UL|ul)?\b';
+				},
+				{	name = 'variable.language.scala';
+					match = '\b(this|super|self)\b';
+				},
+				{	name = 'storage.type.primitive.scala';
+					match = '\b(Unit|Boolean|Byte|Char|Short|Int|Float|Long|Double)\b';
+				},
+				{	name = 'storage.type.scala';
+					match = '\b(String|Symbol)\b';
+				},
+			);
+		};
+		declarations = {
+			patterns = (
+				{	match = '(?x)
+						\b(def)\s+
+						(`[^`]+`|[_$a-zA-Z][_$a-zA-Z0-9]*(?:_[^\t .,;()\[\]{}''"`\w])(?=[(\t ])|[_$a-zA-Z][_$a-zA-Z0-9]*|[-?~><^+*%:!#|/@\\]+)';
+					captures = {
+						1 = { name = 'keyword.declaration.scala'; };
+						2 = { name = 'entity.name.function.declaration'; };
+					};
+				},
+				{	match = '(case)?\b(class|trait|object)\s+([^\s\{\(\[]+)';
+					captures = {
+						1 = { name = 'keyword.declaration.scala'; };
+						2 = { name = 'keyword.declaration.scala'; };
+						3 = { name = 'entity.name.class.declaration'; };
+					};
+				},
+				{	match = '\b(type)\s+(`[^`]+`|[_$a-zA-Z][_$a-zA-Z0-9]*(?:_[^\s])(?=[\t ])|[_$a-zA-Z][_$a-zA-Z0-9]*|[-?~><^+*%:!#|/@\\]+)';
+					captures = {
+						1 = { name = 'keyword.declaration.scala'; };
+						2 = { name = 'entity.name.type.declaration'; };
+					};
+				},
+				{	match = '\b(val)\s+(?:([A-Z][_a-zA-Z0-9]*))\b';
+					captures = {
+						1 = { name = 'keyword.declaration.stable.scala'; };
+						2 = { name = 'constant.other.declaration.scala'; };
+					};
+				},
+				{	match = '\b(?:(val)|(var))\s+(?:(`[^`]+`|[_$a-zA-Z][_$a-zA-Z0-9]*(?:_[^\t .,;()\[\]{}''"`\w])(?=[\t ])|[_$a-zA-Z][_$a-zA-Z0-9]*|[-?~><^+*%:!#|/@\\]+)|(?=\())';
+					captures = {
+						1 = { name = 'keyword.declaration.stable.scala'; };
+						2 = { name = 'keyword.declaration.volatile.scala'; };
+						3 = { name = 'variable.other.declaration.scala'; };
+					};
+				},
+				{	match = '\b(package)\s+(object)\s+([^\s\{\(\[]+)';
+					captures = {
+						1 = { name = 'keyword.other.scoping.scala'; };
+						2 = { name = 'keyword.declaration.scala'; };
+						3 = { name = 'entity.name.class.declaration'; };
+					};
+				},
+				{	name = 'meta.package.scala';
+					begin = '\b(package)\s+';
+					end = '(?<=[\n;])';
+					beginCaptures = { 1 = { name = 'keyword.other.import.scala'; }; };
+					patterns = (
+						{	include = '#comments'; },
+						{	name = 'entity.name.package.scala';
+							match = '(`[^`]+`|[_$a-zA-Z][_$a-zA-Z0-9]*)';
+						},
+						{	name = 'punctuation.definition.package';
+							match = '\.';
+						},
+					);
+				},
+			);
+		};
+		empty-parentheses = {
+			name = 'meta.parentheses.scala';
+			match = '(\(\))';
+			captures = { 1 = { name = 'meta.bracket.scala'; }; };
+		};
+		imports = {
+			name = 'meta.import.scala';
+			begin = '\b(import)\s+';
+			end = '(?<=[\n;])';
+			beginCaptures = { 1 = { name = 'keyword.other.import.scala'; }; };
+			patterns = (
+				{	include = '#comments'; },
+				{	name = 'entity.name.import.scala';
+					match = '(`[^`]+`|[_$a-zA-Z][_$a-zA-Z0-9]*)';
+				},
+				{	name = 'punctuation.definition.import';
+					match = '\.';
+				},
+				{	name = 'meta.import.selector.scala';
+					begin = '{';
+					end = '}';
+					beginCaptures = { 0 = { name = 'meta.bracket.scala'; }; };
+					endCaptures = { 0 = { name = 'meta.bracket.scala'; }; };
+					patterns = (
+						{	match = '(?x) \s*
+				      (`[^`]+`|[_$a-zA-Z][_$a-zA-Z0-9]*) \s*
+				      (=>) \s*
+				      (`[^`]+`|[_$a-zA-Z][_$a-zA-Z0-9]*) \s*
+			        ';
+							captures = {
+								1 = { name = 'entity.name.import.renamed-from.scala'; };
+								2 = { name = 'keyword.other.arrow.scala'; };
+								3 = { name = 'entity.name.import.renamed-to.scala'; };
+							};
+						},
+						{	name = 'entity.name.import.scala';
+							match = '([^\s.,}]+)';
+						},
+					);
+				},
+			);
+		};
+		inheritance = {
+			patterns = (
+				{	match = '(extends|with)\s+([^\s\{\(\[\]]+)';
+					captures = {
+						1 = { name = 'keyword.declaration.scala'; };
+						2 = { name = 'entity.other.inherited-class.scala'; };
+					};
+				},
+			);
+		};
+		initialization = {
+			match = '\b(new)\s+([^\s,\{\}\(\)\[\]]+)';
+			captures = {
+				1 = { name = 'keyword.declaration.scala'; };
+				2 = { name = 'entity.name.class'; };
+			};
+		};
+		keywords = {
+			patterns = (
+				{	name = 'keyword.control.flow.jump.scala';
+					match = '\b(return|throw)\b';
+				},
+				{	name = 'support.function.type-of.scala';
+					match = '\b(classOf|isInstanceOf|asInstanceOf)\b';
+				},
+				{	name = 'keyword.control.flow.scala';
+					match = '\b(else|if|do|while|for|yield|match|case)\b';
+				},
+				{	name = 'keyword.control.exception.scala';
+					match = '\b(catch|finally|try)\b';
+				},
+				{	name = 'keyword.operator.comparison.scala';
+					match = '(==?|!=|<=|>=|<>|<|>)';
+				},
+				{	name = 'keyword.operator.arithmetic.scala';
+					match = '(\-|\+|\*|/(?![/*])|%|~)';
+				},
+				{	name = 'keyword.operator.logical.scala';
+					match = '(!|&&|\|\|)';
+				},
+				{	name = 'keyword.operator.scala';
+					match = '(<-|←|->|→|=>|⇒|\?|\:+|@|\|)+';
+				},
+			);
+		};
+		meta-bounds = {
+			name = 'meta.bounds.scala';
+			comment = 'For themes: Matching view bounds';
+			match = '<%|=:=|<:<|<%<|>:|<:';
+		};
+		meta-brackets = {
+			comment = 'For themes: Brackets look nice when colored.';
+			patterns = (
+				{	name = 'meta.bracket.scala';
+					match = '{|}|\(|\)|\[|\]';
+				},
+			);
+		};
+		meta-colons = {
+			comment = 'For themes: Matching type colons';
+			patterns = (
+				{	name = 'meta.colon.scala';
+					match = '(?<!:):(?!:)';
+				},
+			);
+		};
+		parameter-list = {
+			patterns = (
+				{	comment = 'We do not match param names that start with a Capitol letter';
+					match = '(?<=[^\._$a-zA-Z0-9])(`[^`]+`|[_$a-z][_$a-zA-Z0-9]*(?:_[^\s])(?=[\t ])|[_$a-z][_$a-zA-Z0-9]*|[-?~><^+*%:!#|/@\\]+)\s*(:)\s+';
+					captures = {
+						1 = { name = 'variable.parameter.scala'; };
+						2 = { name = 'meta.colon.scala'; };
+					};
+				},
+			);
+		};
+		qualifiedClassName = {
+			match = '(\b([A-Z][\w]*))';
+			captures = { 1 = { name = 'entity.name.class'; }; };
+		};
+		scala-symbol = {
+			name = 'constant.other.symbol.scala';
+			match = '''\w+(?=[^''\w]|$)';
+		};
+		special-identifier = {
+			comment = '
+		    Match special scala style identifiers that can end with and underscore and
+		    a a not letter such as blank_?.  This way the symbol will not be colored
+		    differently.
+		  ';
+			match = '\b[_$a-zA-Z][_$a-zA-Z0-9]*(?:_[^\t .,;()\[\]{}''"`\w])';
+		};
+		storage-modifiers = {
+			patterns = (
+				{	name = 'storage.modifier.access';
+					match = '\b(private\[\S+\]|protected\[\S+\]|private|protected)\b';
+				},
+				{	name = 'storage.modifier.other';
+					match = '\b(synchronized|@volatile|abstract|final|lazy|sealed|implicit|override|@transient|@native)\b';
+				},
+			);
+		};
+		strings = {
+			patterns = (
+				{	name = 'string.quoted.triple.scala';
+					begin = '"""';
+					end = '"""(?!")';
+					beginCaptures = { 0 = { name = 'punctuation.definition.string.begin.scala'; }; };
+					endCaptures = { 0 = { name = 'punctuation.definition.string.end.scala'; }; };
+					patterns = (
+						{	name = 'constant.character.escape.scala';
+							match = '\\\\|\\u[0-9A-Fa-f]{4}';
+						},
+					);
+				},
+				{	name = 'string.quoted.double.scala';
+					begin = '"';
+					end = '"';
+					beginCaptures = { 0 = { name = 'punctuation.definition.string.begin.scala'; }; };
+					endCaptures = { 0 = { name = 'punctuation.definition.string.end.scala'; }; };
+					patterns = (
+						{	name = 'constant.character.escape.scala';
+							match = '\\(?:[btnfr\\"'']|[0-7]{1,3}|u[0-9A-Fa-f]{4})';
+						},
+						{	name = 'invalid.illegal.unrecognized-string-escape.scala';
+							match = '\\.';
+						},
+					);
+				},
+			);
+		};
+		xml-doublequotedString = {
+			name = 'string.quoted.double.xml';
+			begin = '"';
+			end = '"';
+			beginCaptures = { 0 = { name = 'punctuation.definition.string.begin.xml'; }; };
+			endCaptures = { 0 = { name = 'punctuation.definition.string.end.xml'; }; };
+			patterns = ( { include = '#xml-entity'; } );
+		};
+		xml-embedded-content = {
+			patterns = (
+				{	name = 'meta.source.embedded.scala';
+					begin = '{';
+					end = '}';
+					captures = { 0 = { name = 'meta.bracket.scala'; }; };
+					patterns = ( { include = '#code'; } );
+				},
+				{	match = ' (?:([-_a-zA-Z0-9]+)((:)))?([_a-zA-Z-]+)=';
+					captures = {
+						1 = { name = 'entity.other.attribute-name.namespace.xml'; };
+						2 = { name = 'entity.other.attribute-name.xml'; };
+						3 = { name = 'punctuation.separator.namespace.xml'; };
+						4 = { name = 'entity.other.attribute-name.localname.xml'; };
+					};
+				},
+				{	include = '#xml-doublequotedString'; },
+				{	include = '#xml-singlequotedString'; },
+			);
+		};
+		xml-entity = {
+			name = 'constant.character.entity.xml';
+			match = '(&)([:a-zA-Z_][:a-zA-Z0-9_.-]*|#[0-9]+|#x[0-9a-fA-F]+)(;)';
+			captures = {
+				1 = { name = 'punctuation.definition.constant.xml'; };
+				3 = { name = 'punctuation.definition.constant.xml'; };
+			};
+		};
+		xml-literal = {
+			patterns = (
+				{	name = 'meta.tag.no-content.xml';
+					comment = 'We do not allow a tag name to start with a - since this would
+				               likely conflict with the <- operator. This is not very common
+				               for tag names anyway.  Also code such as -- if (val <val2 || val> val3)
+				               will falsly be recognized as an xml tag.  The solution is to put a
+				               space on either side of the comparison operator';
+					begin = '(<)((?:([_a-zA-Z0-9][_a-zA-Z0-9]*)((:)))?([_a-zA-Z0-9][-_a-zA-Z0-9:]*))(?=(\s[^>]*)?></\2>)';
+					end = '(>(<))/(?:([-_a-zA-Z0-9]+)((:)))?([-_a-zA-Z0-9:]*[_a-zA-Z0-9])(>)';
+					beginCaptures = {
+						1 = { name = 'punctuation.definition.tag.xml'; };
+						3 = { name = 'entity.name.tag.namespace.xml'; };
+						4 = { name = 'entity.name.tag.xml'; };
+						5 = { name = 'punctuation.separator.namespace.xml'; };
+						6 = { name = 'entity.name.tag.localname.xml'; };
+					};
+					endCaptures = {
+						1 = { name = 'punctuation.definition.tag.xml'; };
+						2 = { name = 'meta.scope.between-tag-pair.xml'; };
+						3 = { name = 'entity.name.tag.namespace.xml'; };
+						4 = { name = 'entity.name.tag.xml'; };
+						5 = { name = 'punctuation.separator.namespace.xml'; };
+						6 = { name = 'entity.name.tag.localname.xml'; };
+						7 = { name = 'punctuation.definition.tag.xml'; };
+					};
+					patterns = ( { include = '#xml-embedded-content'; } );
+				},
+				{	name = 'meta.tag.xml';
+					begin = '(</?)(?:([_a-zA-Z0-9][-_a-zA-Z0-9]*)((:)))?([_a-zA-Z0-9][-_a-zA-Z0-9:]*)(?=[^>]*?>)';
+					end = '(/?>)';
+					captures = {
+						1 = { name = 'punctuation.definition.tag.xml'; };
+						2 = { name = 'entity.name.tag.namespace.xml'; };
+						3 = { name = 'entity.name.tag.xml'; };
+						4 = { name = 'punctuation.separator.namespace.xml'; };
+						5 = { name = 'entity.name.tag.localname.xml'; };
+					};
+					patterns = ( { include = '#xml-embedded-content'; } );
+				},
+				{	include = '#xml-entity'; },
+			);
+		};
+		xml-singlequotedString = {
+			name = 'string.quoted.single.xml';
+			begin = "'";
+			end = "'";
+			beginCaptures = { 0 = { name = 'punctuation.definition.string.begin.xml'; }; };
+			endCaptures = { 0 = { name = 'punctuation.definition.string.end.xml'; }; };
+			patterns = ( { include = '#xml-entity'; } );
+		};
+	};
+}
