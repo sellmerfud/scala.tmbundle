@@ -71,10 +71,10 @@ print result
 	<key>outputLocation</key>
 	<string>replaceInput</string>
 	<key>scope</key>
-	<string>source.scala dyn.selection.continuous</string>
+	<string>source.scala</string>
 	<key>uuid</key>
 	<string>B264B8AE-7EBD-413A-94B7-E305C5491CFC</string>
 	<key>version</key>
-	<string>2</string>
+	<integer>2</integer>
 </dict>
 </plist>
