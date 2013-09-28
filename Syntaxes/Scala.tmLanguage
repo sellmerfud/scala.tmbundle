@@ -106,6 +106,10 @@
 			<array>
 				<dict>
 					<key>include</key>
+					<string>#script-header</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#storage-modifiers</string>
 				</dict>
 				<dict>
@@ -810,6 +814,15 @@
 			<string>'\w+(?=[^'\w]|$)</string>
 			<key>name</key>
 			<string>constant.other.symbol.scala</string>
+		</dict>
+		<key>script-header</key>
+		<dict>
+			<key>begin</key>
+			<string>^(?:#!|::#!)</string>
+			<key>end</key>
+			<string>^(?:!#|::!#)</string>
+			<key>name</key>
+			<string>comment.block.script.scala</string>
 		</dict>
 		<key>special-identifier</key>
 		<dict>
