@@ -749,6 +749,22 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>comment</key>
+					<string>The punctuation.section.*.begin is needed for return snippet in source bundle</string>
+					<key>match</key>
+					<string>\{</string>
+					<key>name</key>
+					<string>punctuation.section.block.begin.scala</string>
+				</dict>
+				<dict>
+					<key>comment</key>
+					<string>The punctuation.section.*.end is needed for return snippet in source bundle</string>
+					<key>match</key>
+					<string>\}</string>
+					<key>name</key>
+					<string>punctuation.section.block.end.scala</string>
+				</dict>
+				<dict>
 					<key>match</key>
 					<string>{|}|\(|\)|\[|\]</string>
 					<key>name</key>

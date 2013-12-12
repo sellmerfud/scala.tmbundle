@@ -11,13 +11,23 @@
 	<key>settings</key>
 	<dict>
 		<key>decreaseIndentPattern</key>
-		<string>(?x)^ (.*\*/)? \s* [)}] [;\s]* (//.*|/\*.*\*/\s*)? $</string>
+		<string>(?x)
+       ^ (.*\*/)? \s* [)}] [;\s]* (//.*|/\*)? $
+  |    ^ \s* case\b .* $
+  </string>
 		<key>disableIndentCorrections</key>
-		<true/>
+		<false/>
 		<key>increaseIndentPattern</key>
-		<string>(?x)^ .* [({] [^)}"']* $</string>
+		<string>(?x)
+      ^ .* \{ (\} \s* | [^}"']*) $
+  |   ^ .* \( (\) \s* | [^)"']*) $
+  |    ^ \s* case\b .* =&gt;
+  </string>
 		<key>indentNextLinePattern</key>
-		<string>(?x)^ \s* (if|while) .* [^{] \s* (//.*|/\*.*\*/\s*)? $</string>
+		<string>(?x)
+       (if|while) \s* \( .* [^{] \s* (//.*|/\*.*\*\s*)? $
+  |    ^ .* \{ \} $
+  </string>
 	</dict>
 	<key>uuid</key>
 	<string>EEEDB0BB-E825-4BFF-8D9B-CAE34FFCD8FC</string>

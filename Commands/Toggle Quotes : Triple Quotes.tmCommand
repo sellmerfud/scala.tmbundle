@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby
+
+print case str = STDIN.read
+  when /\A"""(.*)"""\z/m; '"' + $1 + '"'
+  when /\A"(.*)"\z/m; '"""' + $1 + '"""'
+  else str
+end
+</string>
+	<key>input</key>
+	<string>scope</string>
+	<key>inputFormat</key>
+	<string>text</string>
+	<key>keyEquivalent</key>
+	<string>^"</string>
+	<key>name</key>
+	<string>Toggle Double / Triple Quotes</string>
+	<key>outputCaret</key>
+	<string>interpolateByChar</string>
+	<key>outputFormat</key>
+	<string>text</string>
+	<key>outputLocation</key>
+	<string>replaceInput</string>
+	<key>scope</key>
+	<string>string.quoted.double.scala, string.quoted.triple.scala</string>
+	<key>uuid</key>
+	<string>DCC63A78-D7F3-4885-ADA3-C46873D5FF32</string>
+	<key>version</key>
+	<integer>2</integer>
+</dict>
+</plist>
