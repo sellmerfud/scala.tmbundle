@@ -54,7 +54,7 @@ if ENV.member?("TM_SELECTED_TEXT")
   end
 end  
 
-print result
+print result.join("")
 </string>
 	<key>input</key>
 	<string>document</string>

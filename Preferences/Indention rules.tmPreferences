@@ -13,15 +13,13 @@
 		<key>decreaseIndentPattern</key>
 		<string>(?x)
        ^ (.*\*/)? \s* [)}] [;\s]* (//.*|/\*)? $
-  |    ^ \s* case\b .* $
   </string>
 		<key>disableIndentCorrections</key>
-		<false/>
+		<true/>
 		<key>increaseIndentPattern</key>
 		<string>(?x)
       ^ .* \{ (\} \s* | [^}"']*) $
   |   ^ .* \( (\) \s* | [^)"']*) $
-  |    ^ \s* case\b .* =&gt;
   </string>
 		<key>indentNextLinePattern</key>
 		<string>(?x)
