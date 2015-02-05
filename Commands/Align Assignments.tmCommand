@@ -41,33 +41,31 @@
 
 # `lines` will contain either selected text or entire document.
 # If there is a selection, current_line will be the last line of the selection.
+ALIGNMENTS = [
+  { :symbol        =&gt; "=&gt;",
+    :line_pattern  =&gt; /=&gt;/,
+    :col_pattern   =&gt; /[\t ]*=&gt;/,
+    :split_pattern =&gt; /[\t ]*=&gt;[\t ]*/
+  },
+  { :symbol        =&gt; "=",
+    :line_pattern  =&gt; /[^=]*[^-+&lt;&gt;=!%\/|&amp;*^]=(?!=|~|&gt;)/,
+    :col_pattern   =&gt; /[\t ]*=(?!=|~|&gt;)/,
+    :split_pattern =&gt; /[\t ]*=(?!=|~|&gt;)[\t ]*/
+  },
+  { :symbol        =&gt; "-&gt;",
+    :line_pattern  =&gt; /-&gt;/,
+    :col_pattern   =&gt; /[\t ]*-&gt;/,
+    :split_pattern =&gt; /[\t ]*-&gt;[\t ]*/
+  },
+  { :symbol        =&gt; "&lt;-",
+    :line_pattern  =&gt; /&lt;-/,
+    :col_pattern   =&gt; /[\t ]*&lt;-/,
+    :split_pattern =&gt; /[\t ]*&lt;-[\t ]*/
+  }
+]
 
 def match_symbol(line)
-  alignments = [
-    { :symbol        =&gt; "=&gt;",
-      :line_pattern  =&gt; /=&gt;/,
-      :col_pattern   =&gt; /[\t ]*=&gt;/,
-      :split_pattern =&gt; /[\t ]*=&gt;[\t ]*/
-    },
-    { :symbol        =&gt; "=",
-      :line_pattern  =&gt; /[^=]*[^-+&lt;&gt;=!%\/|&amp;*^]=(?!=|~|&gt;)/,
-      :col_pattern   =&gt; /[\t ]*=(?!=|~|&gt;)/,
-      :split_pattern =&gt; /[\t ]*=(?!=|~|&gt;)[\t ]*/
-    },
-    { :symbol        =&gt; "-&gt;",
-      :line_pattern  =&gt; /-&gt;/,
-      :col_pattern   =&gt; /[\t ]*-&gt;/,
-      :split_pattern =&gt; /[\t ]*-&gt;[\t ]*/
-    },
-    { :symbol        =&gt; "&lt;-",
-      :line_pattern  =&gt; /&lt;-/,
-      :col_pattern   =&gt; /[\t ]*&lt;-/,
-      :split_pattern =&gt; /[\t ]*&lt;-[\t ]*/
-    }
-  ]
-  
-  i = alignments.index { |entry| line =~ entry[:line_pattern] }
-  i ? alignments[i] : nil
+  ALIGNMENTS.find { |entry| line =~ entry[:line_pattern] }
 end
 
 lines          = STDIN.readlines()
@@ -79,16 +77,16 @@ a              = nil
 if have_selection
   # Starting at the top of the selection find the first line that contains
   # one of our alignment symbols.
-  0.upto(lines.length - 1) do |number|
-    a = match_symbol(lines[number])
+  (0...lines.length).each do |n|
+    a = match_symbol(lines[n])
     break unless a.nil?
   end
 else
   #
-  # We start looking on the current line.  However, if the
-  # current line doesn't match the line_pattern, we may be just
-  # after or just before a block, and we should check.  If
-  # neither, we are done.
+  # We use the current line to determine the type of alignment symbol
+  # we are operating on.  Then we search above and below the current line
+  # for all lines that contain the alignment symbol to establish the block
+  # of lines that we will align.
 
   start_on      = ENV["TM_LINE_NUMBER"].to_i - 1
   block_top     = lines.length
@@ -118,19 +116,19 @@ unless a.nil?
   # The smallest indentation is used. 
 
   indentation = nil
-  block_top.upto(block_bottom) do |number|
-    line = lines[number]
+  (block_top..block_bottom).each do |n|
+    line = lines[n]
     if line =~ a[:line_pattern] then
-      leading = line.match(/^\s*/).to_s
+      leading = line[/^\s*/]
       indentation = leading if indentation.nil? || leading.size &lt; indentation.size
     end
   end
 
   #
   # Indent all relevant lines with the calculated indention. 
-  block_top.upto(block_bottom) do |number|
-    line = lines[number]
-    lines[number] = indentation + line.sub(/^\s*/,"") if line =~ a[:line_pattern]
+  (block_top..block_bottom).each do |n|
+    line = lines[n]
+    line[/^\s*/] = indentation if line =~ a[:line_pattern]
   end
 
   #
@@ -143,8 +141,8 @@ unless a.nil?
   #
   # First find the best column for the symbol.
   best_column = 0
-  block_top.upto(block_bottom) do |number|
-    line = lines[number]
+  (block_top..block_bottom).each do |n|
+    line = lines[n]
     if line =~ a[:line_pattern] then
       m = a[:col_pattern].match(line)
       best_column = m.begin(0) if m.begin(0) &gt; best_column
@@ -153,11 +151,11 @@ unless a.nil?
 
   #
   # Now reformat the relevant lines in the block.  
-  block_top.upto(block_bottom) do |number|
-    line = lines[number]
+  (block_top..block_bottom).each do |n|
+    line = lines[n]
     if line =~ a[:line_pattern] then
       before, after = line.split(a[:split_pattern], 2)
-      lines[number] = [before.ljust(best_column), after].join(" #{a[:symbol]} ")
+      lines[n] = [before.ljust(best_column), after].join(" #{a[:symbol]} ")
     end
   end
 end
