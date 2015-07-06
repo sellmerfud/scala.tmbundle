@@ -130,10 +130,6 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#block-comments</string>
-				</dict>
-				<dict>
-					<key>include</key>
 					<string>#strings</string>
 				</dict>
 				<dict>
@@ -210,7 +206,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>^\s*(/\*\*)</string>
+					<string>^\s*(/\*\*)(?!/)</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
