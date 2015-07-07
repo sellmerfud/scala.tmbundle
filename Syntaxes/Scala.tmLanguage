@@ -829,12 +829,18 @@
 		</dict>
 		<key>script-header</key>
 		<dict>
-			<key>begin</key>
-			<string>^(?:#!|::#!)</string>
-			<key>end</key>
-			<string>^(?:!#|::!#)</string>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>string.unquoted.shebang.scala</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>^#!(.*)$</string>
 			<key>name</key>
-			<string>comment.block.script.scala</string>
+			<string>comment.block.shebang.scala</string>
 		</dict>
 		<key>special-identifier</key>
 		<dict>
