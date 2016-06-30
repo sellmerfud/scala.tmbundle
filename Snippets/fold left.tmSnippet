@@ -9,7 +9,7 @@
 	<key>scope</key>
 	<string>source.scala</string>
 	<key>tabTrigger</key>
-	<string>foldl</string>
+	<string>fl</string>
 	<key>uuid</key>
 	<string>A3557E0A-4AC5-4284-8B27-E55F48183E44</string>
 </dict>

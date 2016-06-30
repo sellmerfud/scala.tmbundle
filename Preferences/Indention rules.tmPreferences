@@ -24,6 +24,7 @@
 		<key>indentNextLinePattern</key>
 		<string>(?x)
        (if|while) \s* \( .* [^{] \s* (//.*|/\*.*\*\s*)? $
+  |    ^\s*else
   |    ^ .* \{ \} $
   </string>
 	</dict>
