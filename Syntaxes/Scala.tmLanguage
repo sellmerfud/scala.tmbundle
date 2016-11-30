@@ -1004,7 +1004,7 @@
 						</dict>
 					</dict>
 					<key>name</key>
-					<string>string.quoted.triple.scala</string>
+					<string>string.quoted.triple.interpolated.scala</string>
 					<key>patterns</key>
 					<array>
 						<dict>
@@ -1085,7 +1085,7 @@
 						</dict>
 					</dict>
 					<key>name</key>
-					<string>string.quoted.double.scala</string>
+					<string>string.quoted.double.interpolated.scala</string>
 					<key>patterns</key>
 					<array>
 						<dict>
