@@ -8,7 +8,9 @@
 	<string>#!/usr/bin/env ruby -wKU
 
 print case str = STDIN.read
+  when /\A([A-Za-z])"""(.*)"""\z/m; $1 + '"' + $2 + '"'
   when /\A"""(.*)"""\z/m; '"' + $1 + '"'
+  when /\A([A-Za-z])"(.*)"\z/m; $1 + '"""' + $2 + '"""'
   when /\A"(.*)"\z/m; '"""' + $1 + '"""'
   else str
 end
