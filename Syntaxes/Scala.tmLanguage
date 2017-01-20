@@ -470,6 +470,10 @@
 						</dict>
 						<dict>
 							<key>include</key>
+							<string>#var_keywords</string>
+						</dict>
+						<dict>
+							<key>include</key>
 							<string>#default_storage_types</string>
 						</dict>
 						<dict>
@@ -597,6 +601,24 @@
 							<string>[_$a-zA-Z][_$a-zA-Z0-9]*(?:_[^\t .,;()\[\]{}'"`\w]*)</string>
 							<key>name</key>
 							<string>variable.other.declaration.scala</string>
+						</dict>
+						<key>var_keywords</key>
+						<dict>
+							<key>captures</key>
+							<dict>
+								<key>1</key>
+								<dict>
+									<key>name</key>
+									<string>keyword.declaration.volatile.scala</string>
+								</dict>
+								<key>2</key>
+								<dict>
+									<key>name</key>
+									<string>keyword.declaration.stable.scala</string>
+								</dict>
+							</dict>
+							<key>match</key>
+							<string>(\bvar\b)|(\bval\b)</string>
 						</dict>
 					</dict>
 				</dict>
