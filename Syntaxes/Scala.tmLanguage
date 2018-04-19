@@ -5,6 +5,7 @@
 	<key>fileTypes</key>
 	<array>
 		<string>scala</string>
+		<string>sbt</string>
 	</array>
 	<key>firstLineMatch</key>
 	<string>^#!/.*\b\w*scala\b</string>
@@ -436,7 +437,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(?&lt;=^|\s)(var)|(val)\s+</string>
+					<string>(?&lt;=^|\s)(\bvar\b)|(\bval\b)\s+</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>

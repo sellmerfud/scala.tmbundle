@@ -18,8 +18,8 @@
 		<true/>
 		<key>increaseIndentPattern</key>
 		<string>(?x)
-      ^ .* \{ (\} \s* | [^}"']*) $
-  |   ^ .* \( (\) \s* | [^)"']*) $
+      ^ .* \{ [^}"']* $
+  |   ^ .* \( [^)"']* $
   </string>
 		<key>indentNextLinePattern</key>
 		<string>(?x)
