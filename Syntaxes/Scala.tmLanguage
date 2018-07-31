@@ -1086,7 +1086,7 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>\$[a-zA-Z_]\w*</string>
+					<string>\$[a-zA-Z]\w*</string>
 					<key>name</key>
 					<string>meta.embedded.line.scala</string>
 				</dict>
@@ -1771,7 +1771,7 @@
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>$\n?|(?=,|=(?!&gt;)|\))</string>
+			<string>(?=$\n?|,|=(?!&gt;)|\))</string>
 			<key>name</key>
 			<string>meta.type.specifier.scala</string>
 			<key>patterns</key>
@@ -1818,7 +1818,7 @@
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>\(</string>
+					<string>\)</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>0</key>
