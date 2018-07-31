@@ -49,6 +49,48 @@
 				</dict>
 			</array>
 		</dict>
+		<key>capitalizeIdentifier</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>storage.type.scala</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>(?&lt;=\[)([A-Z][\w]*)\b</string>
+				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>storage.type.scala</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>(\b[A-Z][\w]*)(?=[\.\(\[])</string>
+				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>constant.other.variable.scala</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>(\b([A-Z][\w]*))</string>
+				</dict>
+			</array>
+		</dict>
 		<key>char-literal</key>
 		<dict>
 			<key>begin</key>
@@ -175,7 +217,11 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#qualifiedClassName</string>
+					<string>#typeParams</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#capitalizeIdentifier</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -262,7 +308,7 @@
 								<key>2</key>
 								<dict>
 									<key>name</key>
-									<string>entity.name.class</string>
+									<string>entity.name.type.class</string>
 								</dict>
 							</dict>
 							<key>match</key>
@@ -285,7 +331,7 @@
 								<key>2</key>
 								<dict>
 									<key>name</key>
-									<string>entity.other.documentation.link.scala</string>
+									<string>string.other.scaladoc.link.scala</string>
 								</dict>
 								<key>3</key>
 								<dict>
@@ -383,7 +429,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.declaration.scala</string>
+							<string>storage.type.declaration.function.scala</string>
 						</dict>
 						<key>2</key>
 						<dict>
@@ -402,17 +448,17 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.declaration.scala</string>
+							<string>keyword.control.case.scala</string>
 						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.declaration.scala</string>
+							<string>storage.modifier.class.scala</string>
 						</dict>
 						<key>3</key>
 						<dict>
 							<key>name</key>
-							<string>entity.name.class.declaration</string>
+							<string>entity.name.type.class.scala</string>
 						</dict>
 					</dict>
 					<key>match</key>
@@ -424,7 +470,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.declaration.scala</string>
+							<string>storage.type.declaration.type.scala</string>
 						</dict>
 						<key>2</key>
 						<dict>
@@ -443,12 +489,12 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.declaration.volatile.scala</string>
+							<string>storage.type.variable.volatile.scala</string>
 						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.declaration.stable.scala</string>
+							<string>storage.type.variable.stable.scala</string>
 						</dict>
 					</dict>
 					<key>end</key>
@@ -479,7 +525,11 @@
 						</dict>
 						<dict>
 							<key>include</key>
-							<string>#qualifiedClassName</string>
+							<string>#typeParams</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#capitalizeIdentifier</string>
 						</dict>
 						<dict>
 							<key>include</key>
@@ -565,7 +615,11 @@
 								</dict>
 								<dict>
 									<key>include</key>
-									<string>#qualifiedClassName</string>
+									<string>#typeParams</string>
+								</dict>
+								<dict>
+									<key>include</key>
+									<string>#capitalizeIdentifier</string>
 								</dict>
 								<dict>
 									<key>include</key>
@@ -610,16 +664,11 @@
 								<key>1</key>
 								<dict>
 									<key>name</key>
-									<string>keyword.declaration.volatile.scala</string>
-								</dict>
-								<key>2</key>
-								<dict>
-									<key>name</key>
-									<string>keyword.declaration.stable.scala</string>
+									<string>invalid.illegal.keyword_not_allowed_here.scala</string>
 								</dict>
 							</dict>
 							<key>match</key>
-							<string>(\bvar\b)|(\bval\b)</string>
+							<string>(\bvar\b|\bval\b)</string>
 						</dict>
 					</dict>
 				</dict>
@@ -629,17 +678,17 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.other.scoping.scala</string>
+							<string>keyword.other.package.scala</string>
 						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.declaration.scala</string>
+							<string>keyword.other.object.scala</string>
 						</dict>
 						<key>3</key>
 						<dict>
 							<key>name</key>
-							<string>entity.name.class.declaration</string>
+							<string>entity.name.type.class.scala</string>
 						</dict>
 					</dict>
 					<key>match</key>
@@ -653,7 +702,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.other.import.scala</string>
+							<string>keyword.other.package.scala</string>
 						</dict>
 					</dict>
 					<key>end</key>
@@ -670,13 +719,13 @@
 							<key>match</key>
 							<string>(`[^`]+`|[_$a-zA-Z][_$a-zA-Z0-9]*)</string>
 							<key>name</key>
-							<string>entity.name.package.scala</string>
+							<string>storage.modifier.package.scala</string>
 						</dict>
 						<dict>
 							<key>match</key>
 							<string>\.</string>
 							<key>name</key>
-							<string>punctuation.definition.package</string>
+							<string>punctuation.separator.scala</string>
 						</dict>
 					</array>
 				</dict>
@@ -697,59 +746,6 @@
 					<string>\b(String|Symbol)\b</string>
 					<key>name</key>
 					<string>storage.type.scala</string>
-				</dict>
-			</array>
-		</dict>
-		<key>embedded_code</key>
-		<dict>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>begin</key>
-					<string>\$\{</string>
-					<key>beginCaptures</key>
-					<dict>
-						<key>0</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.section.embedded.begin.scala</string>
-						</dict>
-					</dict>
-					<key>contentName</key>
-					<string>source.scala</string>
-					<key>end</key>
-					<string>\}</string>
-					<key>endCaptures</key>
-					<dict>
-						<key>0</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.section.embedded.end.scala</string>
-						</dict>
-					</dict>
-					<key>name</key>
-					<string>meta.embedded.line.scala</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>include</key>
-							<string>#code</string>
-						</dict>
-					</array>
-				</dict>
-				<dict>
-					<key>captures</key>
-					<dict>
-						<key>0</key>
-						<dict>
-							<key>name</key>
-							<string>source.scala</string>
-						</dict>
-					</dict>
-					<key>match</key>
-					<string>\$\w*</string>
-					<key>name</key>
-					<string>meta.embedded.line.scala</string>
 				</dict>
 			</array>
 		</dict>
@@ -794,7 +790,7 @@
 					<key>match</key>
 					<string>(`[^`]+`|[_$a-zA-Z][_$a-zA-Z0-9]*)</string>
 					<key>name</key>
-					<string>entity.name.import.scala</string>
+					<string>storage.modifier.import.scala</string>
 				</dict>
 				<dict>
 					<key>match</key>
@@ -833,17 +829,17 @@
 								<key>1</key>
 								<dict>
 									<key>name</key>
-									<string>entity.name.import.renamed-from.scala</string>
+									<string>storage.modifier.import.scala</string>
 								</dict>
 								<key>2</key>
 								<dict>
 									<key>name</key>
-									<string>keyword.other.arrow.scala</string>
+									<string>keyword.operator.import.rename.scala</string>
 								</dict>
 								<key>3</key>
 								<dict>
 									<key>name</key>
-									<string>entity.name.import.renamed-to.scala</string>
+									<string>storage.modifier.import.renamed.scala</string>
 								</dict>
 							</dict>
 							<key>match</key>
@@ -857,7 +853,13 @@
 							<key>match</key>
 							<string>([^\s.,}]+)</string>
 							<key>name</key>
-							<string>entity.name.import.scala</string>
+							<string>storage.modifier.import.scala</string>
+						</dict>
+						<dict>
+							<key>match</key>
+							<string>,</string>
+							<key>name</key>
+							<string>punctuation.separator.import.scala</string>
 						</dict>
 					</array>
 				</dict>
@@ -873,7 +875,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.declaration.scala</string>
+							<string>storage.modifier.extends.scala</string>
 						</dict>
 						<key>2</key>
 						<dict>
@@ -893,16 +895,163 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.declaration.scala</string>
+					<string>keyword.control.new.scala</string>
 				</dict>
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>entity.name.class</string>
+					<string>storage.type.scala</string>
 				</dict>
 			</dict>
 			<key>match</key>
 			<string>\b(new)\s+([^\s,\{\}\(\)\[\]]+)</string>
+		</dict>
+		<key>interpolated_code</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>comment</key>
+					<string>Two dollar signs escapes the dollar sign to insert a single dollar sign.</string>
+					<key>match</key>
+					<string>\$\$</string>
+					<key>name</key>
+					<string>constant.character.escape.scala</string>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>\$\{</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.section.embedded.begin.scala</string>
+						</dict>
+					</dict>
+					<key>contentName</key>
+					<string>source.scala</string>
+					<key>end</key>
+					<string>\}</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.section.embedded.end.scala</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>meta.embedded.line.scala</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#code</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>source.scala</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>\$[a-zA-Z_]\w*</string>
+					<key>name</key>
+					<string>meta.embedded.line.scala</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\$</string>
+					<key>name</key>
+					<string>invalid.illegal.interpolator</string>
+				</dict>
+			</array>
+		</dict>
+		<key>interpolated_code_with_format</key>
+		<dict>
+			<key>comment</key>
+			<string>Use only with the f"..." string interpolations</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#interpolated_code</string>
+				</dict>
+				<dict>
+					<key>comment</key>
+					<string>Escapes to insert percent sign or newline</string>
+					<key>match</key>
+					<string>%%|%n</string>
+					<key>name</key>
+					<string>constant.character.escape.scala</string>
+				</dict>
+				<dict>
+					<key>comment</key>
+					<string>only - flag, width ok, precision not allowed</string>
+					<key>match</key>
+					<string>%(-?\d+)?[tT][HIklMSLNpzZsQ]</string>
+					<key>name</key>
+					<string>support.constant.interpolated.format.time</string>
+				</dict>
+				<dict>
+					<key>comment</key>
+					<string>only - flag, width ok, precision not allowed</string>
+					<key>match</key>
+					<string>%(-?\d+)?[bB]</string>
+					<key>name</key>
+					<string>support.constant.interpolated.format.boolean</string>
+				</dict>
+				<dict>
+					<key>comment</key>
+					<string>only - flag, width ok, precision not allowed</string>
+					<key>match</key>
+					<string>%(-?\d+)?[cC]</string>
+					<key>name</key>
+					<string>support.constant.interpolated.format.character</string>
+				</dict>
+				<dict>
+					<key>comment</key>
+					<string>only - flag, width ok, precision not allowed</string>
+					<key>match</key>
+					<string>%(-?\d+)?[sS]</string>
+					<key>name</key>
+					<string>support.constant.interpolated.format.string</string>
+				</dict>
+				<dict>
+					<key>comment</key>
+					<string>all flags, width ok, precision ok</string>
+					<key>match</key>
+					<string>%[-#+ 0,(]*\d*(.\d+)?[feEgG]</string>
+					<key>name</key>
+					<string>support.constant.interpolated.format.float</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>%[-#+ 0]*\d*[aA]</string>
+					<key>name</key>
+					<string>support.constant.interpolated.format.hex-float</string>
+				</dict>
+				<dict>
+					<key>comment</key>
+					<string>all flags, width ok, precision not allowed</string>
+					<key>match</key>
+					<string>%[-#+ 0,(]*\d*[doxXhH]</string>
+					<key>name</key>
+					<string>support.constant.interpolated.format.integral</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>%</string>
+					<key>name</key>
+					<string>invalid.illegal.interpolated.format</string>
+				</dict>
+			</array>
 		</dict>
 		<key>keywords</key>
 		<dict>
@@ -1048,19 +1197,6 @@
 				</dict>
 			</array>
 		</dict>
-		<key>qualifiedClassName</key>
-		<dict>
-			<key>captures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>entity.name.class</string>
-				</dict>
-			</dict>
-			<key>match</key>
-			<string>(\b([A-Z][\w]*))</string>
-		</dict>
 		<key>scala-symbol</key>
 		<dict>
 			<key>match</key>
@@ -1102,13 +1238,45 @@
 					<key>match</key>
 					<string>\b(private|protected)\b</string>
 					<key>name</key>
-					<string>storage.modifier.access</string>
+					<string>storage.modifier.access.scala</string>
 				</dict>
 				<dict>
 					<key>match</key>
 					<string>(?:^|\b|\s)(synchronized|@volatile|abstract|final|lazy|sealed|implicit|override|@transient|@native|@tailrec)\b</string>
 					<key>name</key>
-					<string>storage.modifier.other</string>
+					<string>storage.modifier.other.scla</string>
+				</dict>
+			</array>
+		</dict>
+		<key>string_escapes</key>
+		<dict>
+			<key>comment</key>
+			<string>Full set of escape sequences permitted in strings</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>\\(?:[btnfr\\"']|u[0-9A-Fa-f]{4})</string>
+					<key>name</key>
+					<string>constant.character.escape.scala</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\\[0-7]{1,3}</string>
+					<key>name</key>
+					<string>invalid.deprecated.octal.escape.scala</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\\\\|\\u[0-9A-Fa-f]{0,3}</string>
+					<key>name</key>
+					<string>invalid.illegal.unrecognized-unicode-escape.scala</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\\.</string>
+					<key>name</key>
+					<string>invalid.illegal.unrecognized-string-escape.scala</string>
 				</dict>
 			</array>
 		</dict>
@@ -1142,16 +1310,14 @@
 					<key>patterns</key>
 					<array>
 						<dict>
-							<key>match</key>
-							<string>\\\\|\\u[0-9A-Fa-f]{4}</string>
-							<key>name</key>
-							<string>constant.character.escape.scala</string>
+							<key>include</key>
+							<string>#unicode_escapes</string>
 						</dict>
 					</array>
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>([A-Za-z])"""</string>
+					<string>(f)"""</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>0</key>
@@ -1162,7 +1328,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>entity.other.string-interpolation</string>
+							<string>entity.name.function.interpolation.scala</string>
 						</dict>
 					</dict>
 					<key>end</key>
@@ -1176,26 +1342,56 @@
 						</dict>
 					</dict>
 					<key>name</key>
-					<string>string.quoted.triple.interpolated.scala</string>
+					<string>string.interpolated.quoted.double.formatted.scala</string>
 					<key>patterns</key>
 					<array>
 						<dict>
-							<key>match</key>
-							<string>\\\\|\\u[0-9A-Fa-f]{4}</string>
-							<key>name</key>
-							<string>constant.character.escape.scala</string>
-						</dict>
-						<dict>
-							<key>comment</key>
-							<string>Two dollar signs escapes the dollar sign to insert a single dollar sign.</string>
-							<key>match</key>
-							<string>\$\$</string>
-							<key>name</key>
-							<string>constant.character.escape.scala</string>
+							<key>include</key>
+							<string>#unicode_escapes</string>
 						</dict>
 						<dict>
 							<key>include</key>
-							<string>#embedded_code</string>
+							<string>#interpolated_code_with_format</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>([A-Za-z]+)"""</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.begin.scala</string>
+						</dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.function.interpolation.scala</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>"""(?!")</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.end.scala</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>string.interpolated.quoted.triple.scala</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#unicode_escapes</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#interpolated_code</string>
 						</dict>
 					</array>
 				</dict>
@@ -1225,22 +1421,14 @@
 					<key>patterns</key>
 					<array>
 						<dict>
-							<key>match</key>
-							<string>\\(?:[btnfr\\"']|[0-7]{1,3}|u[0-9A-Fa-f]{4})</string>
-							<key>name</key>
-							<string>constant.character.escape.scala</string>
-						</dict>
-						<dict>
-							<key>match</key>
-							<string>\\.</string>
-							<key>name</key>
-							<string>invalid.illegal.unrecognized-string-escape.scala</string>
+							<key>include</key>
+							<string>#string_escapes</string>
 						</dict>
 					</array>
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>([A-Za-z])"</string>
+					<string>(f)"</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>0</key>
@@ -1251,7 +1439,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>entity.other.string-interpolation</string>
+							<string>entity.name.function.interpolation.scala</string>
 						</dict>
 					</dict>
 					<key>end</key>
@@ -1265,88 +1453,356 @@
 						</dict>
 					</dict>
 					<key>name</key>
-					<string>string.quoted.double.interpolated.scala</string>
+					<string>string.interpolated.quoted.double.formatted.scala</string>
 					<key>patterns</key>
 					<array>
 						<dict>
-							<key>match</key>
-							<string>\\(?:[btnfr\\"']|[0-7]{1,3}|u[0-9A-Fa-f]{4})</string>
-							<key>name</key>
-							<string>constant.character.escape.scala</string>
-						</dict>
-						<dict>
-							<key>match</key>
-							<string>\\.</string>
-							<key>name</key>
-							<string>invalid.illegal.unrecognized-string-escape.scala</string>
-						</dict>
-						<dict>
-							<key>comment</key>
-							<string>Two dollar signs escapes the dollar sign to insert a single dollar sign.</string>
-							<key>match</key>
-							<string>\$\$</string>
-							<key>name</key>
-							<string>constant.character.escape.scala</string>
+							<key>include</key>
+							<string>#string_escapes</string>
 						</dict>
 						<dict>
 							<key>include</key>
-							<string>#embedded_code</string>
+							<string>#interpolated_code_with_format</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(raw)"</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.begin.scala</string>
+						</dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.function.interpolation.scala</string>
+						</dict>
+					</dict>
+					<key>comment</key>
+					<string>raw interpolated string only recognize unicode escapes same as triple quoted strings</string>
+					<key>end</key>
+					<string>"</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.end.scala</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>string.interpolated.quoted.double.raw.scala</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#unicode_escapes</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#interpolated_code</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>([A-Za-z]+)"</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.begin.scala</string>
+						</dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.function.interpolation.scala</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>"</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.end.scala</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>string.interpolated.quoted.double.scala</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#string_escapes</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#interpolated_code</string>
 						</dict>
 					</array>
 				</dict>
 			</array>
 		</dict>
-		<key>xml-doublequotedString</key>
+		<key>typeParams</key>
 		<dict>
 			<key>begin</key>
-			<string>"</string>
+			<string>\[</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.definition.string.begin.xml</string>
+					<string>punctuation.section.brackets.scala</string>
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>"</string>
+			<string>\]</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.definition.string.end.xml</string>
+					<string>punctuation.section.brackets.scala</string>
 				</dict>
 			</dict>
 			<key>name</key>
-			<string>string.quoted.double.xml</string>
+			<string>meta.brackets.type-params.scala</string>
 			<key>patterns</key>
 			<array>
+				<dict>
+					<key>include</key>
+					<string>#typeParams</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>([^\s.,\]]+)</string>
+					<key>name</key>
+					<string>storage.type.scala</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\.</string>
+					<key>name</key>
+					<string>keyword.operator.dereference.scala</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>,</string>
+					<key>name</key>
+					<string>punctuation.separator.scala</string>
+				</dict>
+			</array>
+		</dict>
+		<key>unicode_escapes</key>
+		<dict>
+			<key>comment</key>
+			<string>Unicode escape sequences permitted in triple quoted and raw interpolated strings</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>\\\\|\\u[0-9A-Fa-f]{4}</string>
+					<key>name</key>
+					<string>constant.character.escape.scala</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\\\\|\\u[0-9A-Fa-f]{0,3}</string>
+					<key>name</key>
+					<string>invalid.illegal.unrecognized-unicode-escape.scala</string>
+				</dict>
+			</array>
+		</dict>
+		<key>xml-bare-ampersand</key>
+		<dict>
+			<key>match</key>
+			<string>&amp;</string>
+			<key>name</key>
+			<string>invalid.illegal.bad-ampersand.xml</string>
+		</dict>
+		<key>xml-entity</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.constant.xml</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.constant.xml</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(&amp;)([:a-zA-Z_][:a-zA-Z0-9_.-]*|#[0-9]+|#x[0-9a-fA-F]+)(;)</string>
+			<key>name</key>
+			<string>constant.character.entity.xml</string>
+		</dict>
+		<key>xml-literal</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>(&lt;/?)(?:([_a-zA-Z0-9][-_a-zA-Z0-9]*)((:)))?([_a-zA-Z0-9][-_a-zA-Z0-9:]*)</string>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.tag.xml</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.tag.namespace.xml</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.tag.xml</string>
+						</dict>
+						<key>4</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.separator.namespace.xml</string>
+						</dict>
+						<key>5</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.tag.localname.xml</string>
+						</dict>
+					</dict>
+					<key>comment</key>
+					<string>We do not allow a tag name to start with a - since this would
+				               likely conflict with the &lt;- operator. This is not very common
+				               for tag names anyway.  Also code such as -- if (val &lt;val2 || val&gt; val3)
+				               will falsly be recognized as an xml tag.  The solution is to put a
+				               space on either side of the comparison operator</string>
+					<key>end</key>
+					<string>(/?&gt;)</string>
+					<key>name</key>
+					<string>meta.tag.xml</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#xml-tagStuff</string>
+						</dict>
+					</array>
+				</dict>
 				<dict>
 					<key>include</key>
 					<string>#xml-entity</string>
 				</dict>
 			</array>
 		</dict>
-		<key>xml-embedded-content</key>
+		<key>xml-tagStuff</key>
 		<dict>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>{</string>
-					<key>captures</key>
+					<string>"</string>
+					<key>beginCaptures</key>
 					<dict>
 						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>meta.bracket.scala</string>
+							<string>punctuation.definition.string.begin.xml</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>"</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.end.xml</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>string.quoted.double.xml</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#xml-entity</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#xml-bare-ampersand</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>'</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.begin.xml</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>'</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.end.xml</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>string.quoted.single.xml</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#xml-entity</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#xml-bare-ampersand</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>{</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.section.braces.begin</string>
 						</dict>
 					</dict>
 					<key>end</key>
 					<string>}</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.section.braces.begin</string>
+						</dict>
+					</dict>
 					<key>name</key>
-					<string>meta.source.embedded.scala</string>
+					<string>source.scala</string>
 					<key>patterns</key>
 					<array>
 						<dict>
@@ -1381,206 +1837,6 @@
 					</dict>
 					<key>match</key>
 					<string> (?:([-_a-zA-Z0-9]+)((:)))?([_a-zA-Z-]+)=</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#xml-doublequotedString</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#xml-singlequotedString</string>
-				</dict>
-			</array>
-		</dict>
-		<key>xml-entity</key>
-		<dict>
-			<key>captures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.constant.xml</string>
-				</dict>
-				<key>3</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.constant.xml</string>
-				</dict>
-			</dict>
-			<key>match</key>
-			<string>(&amp;)([:a-zA-Z_][:a-zA-Z0-9_.-]*|#[0-9]+|#x[0-9a-fA-F]+)(;)</string>
-			<key>name</key>
-			<string>constant.character.entity.xml</string>
-		</dict>
-		<key>xml-literal</key>
-		<dict>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>begin</key>
-					<string>(&lt;)((?:([_a-zA-Z0-9][_a-zA-Z0-9]*)((:)))?([_a-zA-Z0-9][-_a-zA-Z0-9:]*))(?=(\s[^&gt;]*)?&gt;&lt;/\2&gt;)</string>
-					<key>beginCaptures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.tag.xml</string>
-						</dict>
-						<key>3</key>
-						<dict>
-							<key>name</key>
-							<string>entity.name.tag.namespace.xml</string>
-						</dict>
-						<key>4</key>
-						<dict>
-							<key>name</key>
-							<string>entity.name.tag.xml</string>
-						</dict>
-						<key>5</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.separator.namespace.xml</string>
-						</dict>
-						<key>6</key>
-						<dict>
-							<key>name</key>
-							<string>entity.name.tag.localname.xml</string>
-						</dict>
-					</dict>
-					<key>comment</key>
-					<string>We do not allow a tag name to start with a - since this would
-				               likely conflict with the &lt;- operator. This is not very common
-				               for tag names anyway.  Also code such as -- if (val &lt;val2 || val&gt; val3)
-				               will falsly be recognized as an xml tag.  The solution is to put a
-				               space on either side of the comparison operator</string>
-					<key>end</key>
-					<string>(&gt;(&lt;))/(?:([-_a-zA-Z0-9]+)((:)))?([-_a-zA-Z0-9:]*[_a-zA-Z0-9])(&gt;)</string>
-					<key>endCaptures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.tag.xml</string>
-						</dict>
-						<key>2</key>
-						<dict>
-							<key>name</key>
-							<string>meta.scope.between-tag-pair.xml</string>
-						</dict>
-						<key>3</key>
-						<dict>
-							<key>name</key>
-							<string>entity.name.tag.namespace.xml</string>
-						</dict>
-						<key>4</key>
-						<dict>
-							<key>name</key>
-							<string>entity.name.tag.xml</string>
-						</dict>
-						<key>5</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.separator.namespace.xml</string>
-						</dict>
-						<key>6</key>
-						<dict>
-							<key>name</key>
-							<string>entity.name.tag.localname.xml</string>
-						</dict>
-						<key>7</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.tag.xml</string>
-						</dict>
-					</dict>
-					<key>name</key>
-					<string>meta.tag.no-content.xml</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>include</key>
-							<string>#xml-embedded-content</string>
-						</dict>
-					</array>
-				</dict>
-				<dict>
-					<key>begin</key>
-					<string>(&lt;/?)(?:([_a-zA-Z0-9][-_a-zA-Z0-9]*)((:)))?([_a-zA-Z0-9][-_a-zA-Z0-9:]*)(?=[^&gt;]*?&gt;)</string>
-					<key>captures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.tag.xml</string>
-						</dict>
-						<key>2</key>
-						<dict>
-							<key>name</key>
-							<string>entity.name.tag.namespace.xml</string>
-						</dict>
-						<key>3</key>
-						<dict>
-							<key>name</key>
-							<string>entity.name.tag.xml</string>
-						</dict>
-						<key>4</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.separator.namespace.xml</string>
-						</dict>
-						<key>5</key>
-						<dict>
-							<key>name</key>
-							<string>entity.name.tag.localname.xml</string>
-						</dict>
-					</dict>
-					<key>end</key>
-					<string>(/?&gt;)</string>
-					<key>name</key>
-					<string>meta.tag.xml</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>include</key>
-							<string>#xml-embedded-content</string>
-						</dict>
-					</array>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#xml-entity</string>
-				</dict>
-			</array>
-		</dict>
-		<key>xml-singlequotedString</key>
-		<dict>
-			<key>begin</key>
-			<string>'</string>
-			<key>beginCaptures</key>
-			<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.string.begin.xml</string>
-				</dict>
-			</dict>
-			<key>end</key>
-			<string>'</string>
-			<key>endCaptures</key>
-			<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.string.end.xml</string>
-				</dict>
-			</dict>
-			<key>name</key>
-			<string>string.quoted.single.xml</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#xml-entity</string>
 				</dict>
 			</array>
 		</dict>
