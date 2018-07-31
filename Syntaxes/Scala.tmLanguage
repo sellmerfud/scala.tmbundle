@@ -91,6 +91,242 @@
 				</dict>
 			</array>
 		</dict>
+		<key>case-statement</key>
+		<dict>
+			<key>begin</key>
+			<string>\b(case)(?=\s)</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.flow.scala</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>This is needed to handle the special case of a match against 
+                 a capitalized type name.  Normally a type name may contain =&gt;
+                 to indicated a function type.  But case statements use =&gt; to
+                 terminate the match expression and thus do not allow function types.</string>
+			<key>end</key>
+			<string>(=&gt;)|(if)</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.operator.separator.case.scala</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.operator.if.case.scala</string>
+				</dict>
+			</dict>
+			<key>name</key>
+			<string>meta.case.statement</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comments</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#strings</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#xml-literal</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#case-statement</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#keywords</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#constants</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#default_storage_types</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#scala-symbol</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#special-indentifier</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#char-literal</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#empty-parentheses</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#parameter</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#case-type-spec</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-params</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#capitalizedIdentifier</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#meta-brackets</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#meta-bounds</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#meta-colons</string>
+				</dict>
+			</array>
+		</dict>
+		<key>case-type-spec</key>
+		<dict>
+			<key>begin</key>
+			<string>:(?!\s*_\*)</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.separator.colon.scala</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>Similar to type-spec, but terminates on =&gt;</string>
+			<key>end</key>
+			<string>(?=$\n?|,|=&gt;|if|\))</string>
+			<key>name</key>
+			<string>meta.type.specifier.case.scala</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#tuple-type</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#default_storage_types</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-params</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-name</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-separator</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\*</string>
+					<key>name</key>
+					<string>keyword.operator.varargs</string>
+				</dict>
+			</array>
+			<key>repository</key>
+			<dict>
+				<key>func-type-arrow</key>
+				<dict>
+					<key>match</key>
+					<string>=&gt;</string>
+					<key>name</key>
+					<string>keyword.operator.function-result.scala</string>
+				</dict>
+				<key>tuple-type</key>
+				<dict>
+					<key>begin</key>
+					<string>\(</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.tuple.begin.scala</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>\)</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.tuple.end.scala</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>meta.type.specifier.tuple.scala</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#tuple-type</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#default_storage_types</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#type-params</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#type-name</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#type-separator</string>
+						</dict>
+					</array>
+				</dict>
+				<key>type-name</key>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>storage.type.scala</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>\b([A-Z][\w]*)\b</string>
+				</dict>
+				<key>type-separator</key>
+				<dict>
+					<key>match</key>
+					<string>,</string>
+					<key>name</key>
+					<string>punctuation.separator.scala</string>
+				</dict>
+			</dict>
+		</dict>
 		<key>char-literal</key>
 		<dict>
 			<key>begin</key>
@@ -220,6 +456,10 @@
 				<dict>
 					<key>include</key>
 					<string>#xml-literal</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#case-statement</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -1196,7 +1436,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b(else|if|do|while|for|yield|match|case)\b</string>
+					<string>\b(else|if|do|while|for|yield|match)\b</string>
 					<key>name</key>
 					<string>keyword.control.flow.scala</string>
 				</dict>
@@ -1797,6 +2037,10 @@
 					<string>#type-separator</string>
 				</dict>
 				<dict>
+					<key>include</key>
+					<string>#func-type-arrow</string>
+				</dict>
+				<dict>
 					<key>match</key>
 					<string>\*</string>
 					<key>name</key>
@@ -1805,6 +2049,13 @@
 			</array>
 			<key>repository</key>
 			<dict>
+				<key>func-type-arrow</key>
+				<dict>
+					<key>match</key>
+					<string>=&gt;</string>
+					<key>name</key>
+					<string>keyword.operator.function-result.scala</string>
+				</dict>
 				<key>tuple-type</key>
 				<dict>
 					<key>begin</key>
@@ -1851,6 +2102,10 @@
 							<key>include</key>
 							<string>#type-separator</string>
 						</dict>
+						<dict>
+							<key>include</key>
+							<string>#func-type-arrow</string>
+						</dict>
 					</array>
 				</dict>
 				<key>type-name</key>
@@ -1869,9 +2124,9 @@
 				<key>type-separator</key>
 				<dict>
 					<key>match</key>
-					<string>=&gt;</string>
+					<string>,</string>
 					<key>name</key>
-					<string>keyword.operator.function-result.scala</string>
+					<string>punctuation.separator.scala</string>
 				</dict>
 			</dict>
 		</dict>
