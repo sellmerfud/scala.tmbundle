@@ -3,15 +3,13 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>\${${1:$TM_SELECTED_TEXT}}$0</string>
+	<string>\${${1:$TM_SELECTED_TEXT}}</string>
 	<key>keyEquivalent</key>
 	<string>^$</string>
 	<key>name</key>
 	<string>embed expression in string</string>
 	<key>scope</key>
-	<string>string.quoted.double.interpolated.scala</string>
-	<key>tabTrigger</key>
-	<string>$</string>
+	<string>source.scala string.interpolated</string>
 	<key>uuid</key>
 	<string>A6A27A21-ADF2-4547-88AA-E208BD514197</string>
 </dict>
