@@ -63,18 +63,6 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>(?&lt;=[\.\[])([A-Z][\w]*)\b</string>
-				</dict>
-				<dict>
-					<key>captures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>storage.type.scala</string>
-						</dict>
-					</dict>
-					<key>match</key>
 					<string>(\b[A-Z][\w]*)(?=\s*[\(\[])</string>
 				</dict>
 				<dict>
@@ -153,10 +141,6 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#default_storage_types</string>
-				</dict>
-				<dict>
-					<key>include</key>
 					<string>#scala-symbol</string>
 				</dict>
 				<dict>
@@ -227,10 +211,6 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#default_storage_types</string>
-				</dict>
-				<dict>
-					<key>include</key>
 					<string>#type-params</string>
 				</dict>
 				<dict>
@@ -286,10 +266,6 @@
 						<dict>
 							<key>include</key>
 							<string>#tuple-type</string>
-						</dict>
-						<dict>
-							<key>include</key>
-							<string>#default_storage_types</string>
 						</dict>
 						<dict>
 							<key>include</key>
@@ -468,10 +444,6 @@
 				<dict>
 					<key>include</key>
 					<string>#constants</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#default_storage_types</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -740,10 +712,6 @@
 						</dict>
 						<dict>
 							<key>include</key>
-							<string>#default_storage_types</string>
-						</dict>
-						<dict>
-							<key>include</key>
 							<string>#parameter-list</string>
 						</dict>
 						<dict>
@@ -833,10 +801,6 @@
 						</dict>
 						<dict>
 							<key>include</key>
-							<string>#default_storage_types</string>
-						</dict>
-						<dict>
-							<key>include</key>
 							<string>#class-parameter-list</string>
 						</dict>
 						<dict>
@@ -905,10 +869,6 @@
 						<dict>
 							<key>include</key>
 							<string>#comments</string>
-						</dict>
-						<dict>
-							<key>include</key>
-							<string>#default_storage_types</string>
 						</dict>
 						<dict>
 							<key>include</key>
@@ -1058,10 +1018,6 @@
 						</dict>
 						<dict>
 							<key>include</key>
-							<string>#default_storage_types</string>
-						</dict>
-						<dict>
-							<key>include</key>
 							<string>#type-params</string>
 						</dict>
 						<dict>
@@ -1095,24 +1051,6 @@
 					<string>variable.other.declaration.scala</string>
 				</dict>
 			</dict>
-		</dict>
-		<key>default_storage_types</key>
-		<dict>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>match</key>
-					<string>\b(Unit|Boolean|Byte|Char|Short|Int|Float|Long|Double)\b</string>
-					<key>name</key>
-					<string>storage.type.primitive.scala</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>\b(String|Symbol)\b</string>
-					<key>name</key>
-					<string>storage.type.scala</string>
-				</dict>
-			</array>
 		</dict>
 		<key>empty-parentheses</key>
 		<dict>
@@ -2034,10 +1972,6 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#default_storage_types</string>
-				</dict>
-				<dict>
-					<key>include</key>
 					<string>#type-params</string>
 				</dict>
 				<dict>
@@ -2097,10 +2031,6 @@
 						<dict>
 							<key>include</key>
 							<string>#tuple-type</string>
-						</dict>
-						<dict>
-							<key>include</key>
-							<string>#default_storage_types</string>
 						</dict>
 						<dict>
 							<key>include</key>
