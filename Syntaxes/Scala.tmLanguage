@@ -1436,6 +1436,18 @@
 				</dict>
 				<dict>
 					<key>match</key>
+					<string>\b(trait|class|object)\b</string>
+					<key>name</key>
+					<string>storage.type.scala</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\bextends\b</string>
+					<key>name</key>
+					<string>storage.modifier.scala</string>
+				</dict>
+				<dict>
+					<key>match</key>
 					<string>\b(else|if|do|while|for|yield|match)\b</string>
 					<key>name</key>
 					<string>keyword.control.flow.scala</string>

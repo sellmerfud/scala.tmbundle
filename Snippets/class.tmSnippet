@@ -3,8 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>class ${1:ClassName}${2:(${3:param}: ${4:Type})}$0
-</string>
+	<string>class ${1:ClassName}${2:(${3:param}: ${4:Type})}$0</string>
 	<key>name</key>
 	<string>class</string>
 	<key>scope</key>
