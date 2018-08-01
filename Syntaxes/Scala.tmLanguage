@@ -681,7 +681,7 @@
 					<key>match</key>
 					<string>\b(this|super|_)\b</string>
 					<key>name</key>
-					<string>variable.language.scala</string>
+					<string>variable.language.underscore.scala</string>
 				</dict>
 			</array>
 		</dict>
