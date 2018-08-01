@@ -196,7 +196,7 @@
 		<key>case-type-spec</key>
 		<dict>
 			<key>begin</key>
-			<string>(?&lt;![-:+=!&lt;&gt;]):(?![-:+=!&lt;&gt;]|\s*_\*)</string>
+			<string>(?&lt;![-:+=!&lt;&gt;^]):(?![-:+=!&lt;&gt;^]|\s*_\*)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>0</key>
@@ -208,7 +208,7 @@
 			<key>comment</key>
 			<string>Similar to type-spec, but terminates on =&gt;</string>
 			<key>end</key>
-			<string>(?=$\n?|,|=&gt;|if|\))</string>
+			<string>(?=$\n?|//|,|=&gt;|if|\))</string>
 			<key>name</key>
 			<string>meta.type.specifier.case.scala</string>
 			<key>patterns</key>
@@ -216,6 +216,10 @@
 				<dict>
 					<key>include</key>
 					<string>#annotations</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#comments</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -1410,45 +1414,21 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(==|!=|&lt;=|&gt;=|&lt;&gt;|&lt;|&gt;)</string>
-					<key>name</key>
-					<string>keyword.operator.comparison.scala</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>=</string>
-					<key>name</key>
-					<string>keyword.operator.assignment.scala</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>(!|&amp;&amp;|\|\|)</string>
-					<key>name</key>
-					<string>keyword.operator.logical.scala</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>(&lt;-|←|-&gt;|→|=&gt;|⇒|\?|\:{2,}|@|\|)+</string>
-					<key>name</key>
-					<string>keyword.operator.scala</string>
-				</dict>
-				<dict>
-					<key>match</key>
 					<string>_\*</string>
 					<key>name</key>
 					<string>keyword.operator.splat.scala</string>
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(\-|\+|\*|/(?![/*])|%|~)</string>
+					<string>[-*&amp;|@%~?+:=!&lt;&gt;^]+</string>
 					<key>name</key>
-					<string>keyword.operator.arithmetic.scala</string>
+					<string>keyword.operator.scala</string>
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>[-+:=!&lt;&gt;]{2,}</string>
+					<string>(&lt;-|←|-&gt;|→|=&gt;|⇒)+</string>
 					<key>name</key>
-					<string>keyword.operator.other.scala</string>
+					<string>keyword.operator.multibyte.scala</string>
 				</dict>
 			</array>
 		</dict>
@@ -1512,7 +1492,7 @@
                    | [_$a-z][_$a-zA-Z0-9]*(?:_[-?~&gt;&lt;^+*%:!#|/@\\]+)?
                    | [-?~&gt;&lt;^+*%:!#|/@\\]+
                    )
-                   (?=\s*:(?![-:+=!&lt;&gt;]|\s*_\*))                   
+                   (?=\s*:(?![-:+=!&lt;&gt;^]|\s*_\*))                   
                   </string>
 				</dict>
 			</array>
@@ -1955,7 +1935,7 @@
 		<key>type-spec</key>
 		<dict>
 			<key>begin</key>
-			<string>(?&lt;![-:+=!&lt;&gt;]):(?![-:+=!&lt;&gt;]|\s*_\*)</string>
+			<string>(?&lt;![-:+=!&lt;&gt;^]):(?![-:+=!&lt;&gt;^]|\s*_\*)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>0</key>
@@ -1965,7 +1945,7 @@
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>(?=$\n?|,|=(?!&gt;)|\))</string>
+			<string>(?=$\n?|//|,|=(?!&gt;)|\))</string>
 			<key>name</key>
 			<string>meta.type.specifier.scala</string>
 			<key>patterns</key>
@@ -1973,6 +1953,10 @@
 				<dict>
 					<key>include</key>
 					<string>#annotations</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#comments</string>
 				</dict>
 				<dict>
 					<key>include</key>
