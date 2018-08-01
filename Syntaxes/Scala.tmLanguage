@@ -26,6 +26,18 @@
 	</array>
 	<key>repository</key>
 	<dict>
+		<key>annotations</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>@[A-Za-z]\w+\b</string>
+					<key>name</key>
+					<string>storage.type.anotation.scala</string>
+				</dict>
+			</array>
+		</dict>
 		<key>block-comments</key>
 		<dict>
 			<key>begin</key>
@@ -179,16 +191,12 @@
 					<key>include</key>
 					<string>#meta-bounds</string>
 				</dict>
-				<dict>
-					<key>include</key>
-					<string>#meta-colons</string>
-				</dict>
 			</array>
 		</dict>
 		<key>case-type-spec</key>
 		<dict>
 			<key>begin</key>
-			<string>:(?!\s*_\*)</string>
+			<string>(?&lt;![-:+=!&lt;&gt;]):(?![-:+=!&lt;&gt;]|\s*_\*)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>0</key>
@@ -205,6 +213,10 @@
 			<string>meta.type.specifier.case.scala</string>
 			<key>patterns</key>
 			<array>
+				<dict>
+					<key>include</key>
+					<string>#annotations</string>
+				</dict>
 				<dict>
 					<key>include</key>
 					<string>#tuple-type</string>
@@ -403,6 +415,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#annotations</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#storage-modifiers</string>
 				</dict>
 				<dict>
@@ -484,10 +500,6 @@
 				<dict>
 					<key>include</key>
 					<string>#meta-bounds</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#meta-colons</string>
 				</dict>
 			</array>
 		</dict>
@@ -1432,6 +1444,12 @@
 					<key>name</key>
 					<string>keyword.operator.arithmetic.scala</string>
 				</dict>
+				<dict>
+					<key>match</key>
+					<string>[-+:=!&lt;&gt;]{2,}</string>
+					<key>name</key>
+					<string>keyword.operator.other.scala</string>
+				</dict>
 			</array>
 		</dict>
 		<key>meta-bounds</key>
@@ -1473,20 +1491,6 @@
 				</dict>
 			</array>
 		</dict>
-		<key>meta-colons</key>
-		<dict>
-			<key>comment</key>
-			<string>For themes: Matching type colons</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>match</key>
-					<string>(?&lt;!:):(?!:)</string>
-					<key>name</key>
-					<string>punctuation.separator.colon.scala</string>
-				</dict>
-			</array>
-		</dict>
 		<key>parameter</key>
 		<dict>
 			<key>patterns</key>
@@ -1508,7 +1512,7 @@
                    | [_$a-z][_$a-zA-Z0-9]*(?:_[-?~&gt;&lt;^+*%:!#|/@\\]+)?
                    | [-?~&gt;&lt;^+*%:!#|/@\\]+
                    )
-                   (?=\s*:(?!\s*_\*))
+                   (?=\s*:(?![-:+=!&lt;&gt;]|\s*_\*))                   
                   </string>
 				</dict>
 			</array>
@@ -1590,9 +1594,9 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(?:^|\b|\s)(synchronized|@volatile|abstract|final|lazy|sealed|implicit|override|@transient|@native|@tailrec)\b</string>
+					<string>(?&lt;=^|\b|\s)(synchronized|abstract|final|lazy|sealed|implicit|override)\b</string>
 					<key>name</key>
-					<string>storage.modifier.other.scla</string>
+					<string>storage.modifier.other.scala</string>
 				</dict>
 			</array>
 		</dict>
@@ -1951,7 +1955,7 @@
 		<key>type-spec</key>
 		<dict>
 			<key>begin</key>
-			<string>:(?!\s*_\*)</string>
+			<string>(?&lt;![-:+=!&lt;&gt;]):(?![-:+=!&lt;&gt;]|\s*_\*)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>0</key>
@@ -1966,6 +1970,10 @@
 			<string>meta.type.specifier.scala</string>
 			<key>patterns</key>
 			<array>
+				<dict>
+					<key>include</key>
+					<string>#annotations</string>
+				</dict>
 				<dict>
 					<key>include</key>
 					<string>#tuple-type</string>
