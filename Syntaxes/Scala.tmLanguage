@@ -399,7 +399,7 @@
 			<array>
 				<dict>
 					<key>match</key>
-					<string>\b(?:var|val)\b</string>
+					<string>\b(var|val)\b</string>
 					<key>name</key>
 					<string>storage.type.parameter.class</string>
 				</dict>
@@ -1616,6 +1616,87 @@
 		<dict>
 			<key>patterns</key>
 			<array>
+				<dict>
+					<key>begin</key>
+					<string>"""(?=(?:\(\?)|(?:.|$)*?"""\.(r\b))</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.begin.scala</string>
+						</dict>
+					</dict>
+					<key>comment</key>
+					<string>We match """(? for when multi lines are used</string>
+					<key>end</key>
+					<string>"""\.(r)\b</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.end.scala</string>
+						</dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>support.function.string.regex.scala</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>string.regexp.triple.scala</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>source.regexp.java</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(raw)"(?=.*\"\.r)</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.begin.scala</string>
+						</dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>support.function.string.interpolation.scala</string>
+						</dict>
+					</dict>
+					<key>comment</key>
+					<string>raw interpolated string only recognize unicode escapes same as triple quoted strings</string>
+					<key>end</key>
+					<string>"\.(r)</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.end.scala</string>
+						</dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>support.function.string.regex.scala</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>string.regexp.raw.scala</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>source.regexp.java</string>
+						</dict>
+					</array>
+				</dict>
 				<dict>
 					<key>begin</key>
 					<string>"""</string>
