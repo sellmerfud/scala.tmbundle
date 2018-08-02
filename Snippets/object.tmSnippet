@@ -3,14 +3,16 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>toUpperCase</string>
+	<string>object ${1:ObjectName} {
+	$0
+}</string>
 	<key>name</key>
-	<string>toUpperCase</string>
+	<string>object</string>
 	<key>scope</key>
 	<string>source.scala</string>
 	<key>tabTrigger</key>
-	<string>tuc</string>
+	<string>o</string>
 	<key>uuid</key>
-	<string>8C3C384D-1B84-49F9-A5F5-793AFE3ED14D</string>
+	<string>84D83F43-40DA-4D04-8BC0-C44120383EC0</string>
 </dict>
 </plist>

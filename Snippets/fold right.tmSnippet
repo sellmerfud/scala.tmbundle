@@ -5,7 +5,7 @@
 	<key>content</key>
 	<string>foldRight(${1:0}) { (${2:n}, ${3:accum}) =&gt; $4 }</string>
 	<key>name</key>
-	<string>fold right</string>
+	<string>foldRight</string>
 	<key>scope</key>
 	<string>source.scala</string>
 	<key>tabTrigger</key>

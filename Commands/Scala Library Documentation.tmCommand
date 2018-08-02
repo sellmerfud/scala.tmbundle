@@ -8,14 +8,17 @@
 	<string>#!/usr/bin/env bash
 [[ -f "${TM_SUPPORT_PATH}/lib/bash_init.sh" ]] &amp;&amp; . "${TM_SUPPORT_PATH}/lib/bash_init.sh"
 
+# You can set the SCALA_DOC variable in your .tm_properties file to point
+# to the URL of the docs for the version of scala that you are using.
 if [[ "${SCALA_DOC}" ]]
-    then echo "&lt;meta http-equiv='Refresh' content='0;URL=file://$SCALA_DOC/index.html'&gt;"
-    else echo "&lt;meta http-equiv='Refresh' content='0;URL=http://www.scala-lang.org/api/current/index.html'&gt;"
-fi</string>
+    then echo "&lt;meta http-equiv='Refresh' content='0;URL=$SCALA_DOC'&gt;"
+    else echo "&lt;meta http-equiv='Refresh' content='0;URL=https://docs.scala-lang.org/api/all.html'&gt;"
+fi
+</string>
 	<key>fallbackInput</key>
 	<string>none</string>
 	<key>input</key>
-	<string>selection</string>
+	<string>none</string>
 	<key>inputFormat</key>
 	<string>text</string>
 	<key>keyEquivalent</key>

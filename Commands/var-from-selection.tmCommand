@@ -63,7 +63,7 @@ print result.join("")
 	<key>keyEquivalent</key>
 	<string>^v</string>
 	<key>name</key>
-	<string>var-from-selection</string>
+	<string>val from selection</string>
 	<key>outputCaret</key>
 	<string>interpolateByLine</string>
 	<key>outputFormat</key>

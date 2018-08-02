@@ -7,7 +7,7 @@
 	<key>keyEquivalent</key>
 	<string>^'</string>
 	<key>name</key>
-	<string>single quote</string>
+	<string>Single quote</string>
 	<key>scope</key>
 	<string>source.scala</string>
 	<key>uuid</key>

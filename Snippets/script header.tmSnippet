@@ -5,11 +5,11 @@
 	<key>content</key>
 	<string>#!/usr/bin/env scala</string>
 	<key>name</key>
-	<string>#!/usr/bin/env scala</string>
+	<string>hashbang</string>
 	<key>scope</key>
 	<string>source.scala, L:dyn.caret.begin.document</string>
 	<key>tabTrigger</key>
-	<string>scala</string>
+	<string>#!</string>
 	<key>uuid</key>
 	<string>11D5086B-FD25-4B33-92E3-4DEADCF4119D</string>
 </dict>

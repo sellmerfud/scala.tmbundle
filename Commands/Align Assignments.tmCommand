@@ -173,7 +173,7 @@ print lines.join
 	<key>keyEquivalent</key>
 	<string>~@]</string>
 	<key>name</key>
-	<string>Align Assignments</string>
+	<string>Align =&gt;, =, -&gt;, &lt;-</string>
 	<key>outputCaret</key>
 	<string>heuristic</string>
 	<key>outputFormat</key>

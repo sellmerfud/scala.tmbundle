@@ -1660,7 +1660,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>entity.name.function.interpolation.scala</string>
+							<string>support.function.string.interpolation.scala</string>
 						</dict>
 					</dict>
 					<key>end</key>
@@ -1700,7 +1700,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>entity.name.function.interpolation.scala</string>
+							<string>support.function.string.interpolation.scala</string>
 						</dict>
 					</dict>
 					<key>end</key>
@@ -1771,7 +1771,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>entity.name.function.interpolation.scala</string>
+							<string>support.function.string.interpolation.scala</string>
 						</dict>
 					</dict>
 					<key>end</key>
@@ -1811,7 +1811,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>entity.name.function.interpolation.scala</string>
+							<string>support.function.string.interpolation.scala</string>
 						</dict>
 					</dict>
 					<key>comment</key>
@@ -1853,7 +1853,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>entity.name.function.interpolation.scala</string>
+							<string>support.function.string.interpolation.scala</string>
 						</dict>
 					</dict>
 					<key>end</key>

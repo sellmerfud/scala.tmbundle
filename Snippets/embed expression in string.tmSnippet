@@ -7,7 +7,7 @@
 	<key>keyEquivalent</key>
 	<string>^$</string>
 	<key>name</key>
-	<string>embed expression in string</string>
+	<string>Interpolated ${expression}</string>
 	<key>scope</key>
 	<string>source.scala string.interpolated</string>
 	<key>uuid</key>
