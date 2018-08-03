@@ -3,27 +3,22 @@
 <plist version="1.0">
 <dict>
 	<key>beforeRunningCommand</key>
-	<string>nop</string>
+	<string>saveActiveFile</string>
 	<key>command</key>
 	<string>#!/usr/bin/env ruby18 -wKU
 
-require ENV['TM_SUPPORT_PATH'] + '/lib/textmate.rb'
-require ENV["TM_SUPPORT_PATH"] + "/lib/tm/htmloutput"
+require "#{ENV['TM_SUPPORT_PATH']}/lib/tm/executor"
+require "#{ENV['TM_SUPPORT_PATH']}/lib/tm/save_current_document"
 
-TextMate.require_env_var("SCALA_HOME", "Please set the SCALA_HOME shell variable to the root of your scala installation. For me this is /Users/Mads/dev/programming_languages/scala-2.8.0.final")
-
-if ENV['TM_FILEPATH'] != nil
-  TextMate::HTMLOutput.show(
-    :title =&gt; "Running: #{ENV['TM_FILEPATH']}", 
-    :sub_title =&gt; "") do |io|
-      cmd = ENV['SCALA_HOME'] + "/bin/scala -nocompdaemon -howtorun:script " + "'" + ENV['TM_FILEPATH'] + "'"
-      io &lt;&lt; "&lt;pre&gt;&lt;code&gt;"
-      io &lt;&lt; `#{cmd}`
-      io &lt;&lt; "&lt;/code&gt;&lt;/pre&gt;"
-    end
-else
-	puts "Please save your file first"
+TextMate.save_if_untitled('scala')
+scala_home = ENV['TM_SCALA_HOME'] || ENV['SCALA_HOME']
+unless scala_home
+  puts '&lt;p style="color: red;"&gt;Cannot find scala.  Please set one of: TM_SCALA_HOME, SCALA_HOME&lt;/p&gt;'
+  exit
 end
+TextMate::Executor.run("#{scala_home}/bin/scala", '-nocompdaemon', '-howtorun:script', ENV['TM_FILEPATH'], 
+      :version_args =&gt; ["-version"], :version_regex =&gt; /\A(Scala code runner version \S*).*/m)
+
 
 
 
