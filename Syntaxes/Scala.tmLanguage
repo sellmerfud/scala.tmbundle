@@ -38,6 +38,26 @@
 				</dict>
 			</array>
 		</dict>
+		<key>backtick-identifier</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.backtick-id.start.scala</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.backtick-id.end.scala</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(`)[^`]+(`)</string>
+			<key>name</key>
+			<string>meta.backtick-id.scala</string>
+		</dict>
 		<key>block-comments</key>
 		<dict>
 			<key>begin</key>
@@ -134,6 +154,10 @@
 				<dict>
 					<key>include</key>
 					<string>#strings</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#backtick-identifier</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -444,6 +468,10 @@
 				<dict>
 					<key>include</key>
 					<string>#strings</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#backtick-identifier</string>
 				</dict>
 				<dict>
 					<key>include</key>
