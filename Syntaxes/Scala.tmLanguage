@@ -1618,6 +1618,66 @@
 			<array>
 				<dict>
 					<key>begin</key>
+					<string>(\braw)"""(?=(?:\(\?)|(?:.|$)*?"""\.(r\b))</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.begin.scala</string>
+						</dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>support.function.string.interpolation.scala</string>
+						</dict>
+					</dict>
+					<key>comment</key>
+					<string>We match """(? for when multi lines are used</string>
+					<key>end</key>
+					<string>"""\.(r)\b</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.end.scala</string>
+						</dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>support.function.string.regex.scala</string>
+						</dict>
+					</dict>
+					<key>injections</key>
+					<dict>
+						<key>L:meta.group.regexp.java, constant.other.character-class.set.regexp.java</key>
+						<dict>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#interpolated_code</string>
+								</dict>
+							</array>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>string.regexp.triple.scala</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#interpolated_code</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>source.regexp.java</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
 					<string>"""(?=(?:\(\?)|(?:.|$)*?"""\.(r\b))</string>
 					<key>beginCaptures</key>
 					<dict>
@@ -1656,7 +1716,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(raw)"(?=.*\"\.r)</string>
+					<string>(\braw)"(?=.*\"\.r)</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>0</key>
@@ -1747,7 +1807,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(f)"""</string>
+					<string>(\bf)"""</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>0</key>
@@ -1787,7 +1847,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>([A-Za-z]+)"""</string>
+					<string>(\b[A-Za-z]+)"""</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>0</key>
@@ -1858,7 +1918,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(f)"</string>
+					<string>(\bf)"</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>0</key>
@@ -1898,7 +1958,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(raw)"</string>
+					<string>(\braw)"</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>0</key>
@@ -1940,7 +2000,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>([A-Za-z]+)"</string>
+					<string>\b([A-Za-z]+)"</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>0</key>
