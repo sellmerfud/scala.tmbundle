@@ -1687,10 +1687,27 @@
 							<string>support.function.string.regex.scala</string>
 						</dict>
 					</dict>
+					<key>injections</key>
+					<dict>
+						<key>L:meta.group.regexp.java, constant.other.character-class.set.regexp.java</key>
+						<dict>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#interpolated_code</string>
+								</dict>
+							</array>
+						</dict>
+					</dict>
 					<key>name</key>
 					<string>string.regexp.raw.scala</string>
 					<key>patterns</key>
 					<array>
+						<dict>
+							<key>include</key>
+							<string>#interpolated_code</string>
+						</dict>
 						<dict>
 							<key>include</key>
 							<string>source.regexp.java</string>
