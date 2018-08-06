@@ -64,6 +64,12 @@
 		</dict>
 		<dict>
 			<key>match</key>
+			<string>\{</string>
+			<key>name</key>
+			<string>invalid.illegal.unescaped-brace.regexp.java</string>
+		</dict>
+		<dict>
+			<key>match</key>
 			<string>\|</string>
 			<key>name</key>
 			<string>keyword.operator.or.regexp.java</string>
@@ -212,6 +218,12 @@
 					<string>\\[pP]\{(L[ultmo]?|M[nce]?|N[dlo]?|S[mcko]?|P[cdseifo]?|Z[slp]?|C[cfson]?|IsLatin|InGreek|IsAlphabetic)\}</string>
 					<key>name</key>
 					<string>constant.other.character-class.unicode.regexp.java</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\\[pP]\{.*\}</string>
+					<key>name</key>
+					<string>invalid.illegal.character-class.regexp.java</string>
 				</dict>
 				<dict>
 					<key>match</key>
