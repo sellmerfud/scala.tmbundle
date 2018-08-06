@@ -95,7 +95,7 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>(\b[A-Z][\w]*)(?=\s*[\(\[])</string>
+					<string>(\b[A-Z][\w]*)(?=\s*\[)</string>
 				</dict>
 				<dict>
 					<key>captures</key>
@@ -1062,6 +1062,10 @@
 						</dict>
 						<dict>
 							<key>include</key>
+							<string>#parameter</string>
+						</dict>
+						<dict>
+							<key>include</key>
 							<string>#type-params</string>
 						</dict>
 						<dict>
@@ -1511,6 +1515,16 @@
 							<key>name</key>
 							<string>variable.parameter.scala</string>
 						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.separator.colon.scala</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>storage.type.scala</string>
+						</dict>
 					</dict>
 					<key>comment</key>
 					<string>We do not match param names that start with a Capitol letter</string>
@@ -1520,7 +1534,9 @@
                    | [_$a-z][_$a-zA-Z0-9]*(?:_[-?~&gt;&lt;^+*%:!#|/@\\]+)?
                    | [-?~&gt;&lt;^+*%:!#|/@\\]+
                    )
-                   (?=\s*:(?![-:+=!&lt;&gt;^]|\s*_\*))                   
+                   (?:\s*(:)(?![-:+=!&lt;&gt;^]|\s*_\*))
+                   \s*
+                   ([A-Z][\w]*)
                   </string>
 				</dict>
 			</array>
