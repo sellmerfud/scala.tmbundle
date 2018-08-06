@@ -17,7 +17,9 @@ unless scala_home
   exit
 end
 TextMate::Executor.run("#{scala_home}/bin/scala", '-nocompdaemon', '-howtorun:script', ENV['TM_FILEPATH'], 
-      :version_args =&gt; ["-version"], :version_regex =&gt; /\A(Scala code runner version \S*).*/m)
+                       :version_args    =&gt; ["-version"],
+                       :version_regex   =&gt; /\A(?:Scala code runner version (\S*)).*/m,
+                       :version_replace =&gt; 'Scala \1')
 
 
 
