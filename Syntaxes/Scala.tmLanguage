@@ -193,11 +193,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#parameter</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#case-type-spec</string>
+					<string>#case-type-match</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -214,6 +210,42 @@
 				<dict>
 					<key>include</key>
 					<string>#meta-bounds</string>
+				</dict>
+			</array>
+		</dict>
+		<key>case-type-match</key>
+		<dict>
+			<key>begin</key>
+			<string>(?x)
+               (`[^`]+`
+               | [_$a-z][_$a-zA-Z0-9]*(?:_[-?~&gt;&lt;^+=*&amp;%:!#|/@\\]+\s)?
+               | [-?~&gt;&lt;^+*&amp;%:!#|/@\\][-?~&gt;&lt;^+=*&amp;%:!#|/@\\]*\s
+               | =[-?~&gt;&lt;^+*&amp;%:!#|/@\\]+\s
+               )
+               (?=\s*(:)(?![-?~&gt;&lt;^+=*&amp;%:!#|/@\\]|\s*_\*))
+              </string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>variable.parameter.scala</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.separator.colon.scala</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(?=$\n?|,|\)|=&gt;(?![[-?~&gt;&lt;^+=*&amp;%:!#|/@\\]]))</string>
+			<key>name</key>
+			<string>meta.case-parameter.declaration</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#case-type-spec</string>
 				</dict>
 			</array>
 		</dict>
@@ -270,13 +302,6 @@
 			</array>
 			<key>repository</key>
 			<dict>
-				<key>func-type-arrow</key>
-				<dict>
-					<key>match</key>
-					<string>=&gt;</string>
-					<key>name</key>
-					<string>keyword.operator.function-result.scala</string>
-				</dict>
 				<key>tuple-type</key>
 				<dict>
 					<key>begin</key>
@@ -332,7 +357,7 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>\b([A-Z][\w]*)\b</string>
+					<string>\b(\w+)\b</string>
 				</dict>
 				<key>type-separator</key>
 				<dict>
@@ -511,11 +536,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#parameter</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#type-spec</string>
+					<string>#parameter-declaration</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -733,15 +754,7 @@
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>$\n?|(=)(?![[-?~&gt;&lt;^+=*&amp;%:!#|/@\\]])</string>
-					<key>endCaptures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>keyword.operator.assignment.scala</string>
-						</dict>
-					</dict>
+					<string>(?=$\n?|=(?![[-?~&gt;&lt;^+=*&amp;%:!#|/@\\]]))</string>
 					<key>name</key>
 					<string>meta.function.scala</string>
 					<key>patterns</key>
@@ -768,7 +781,7 @@
 						</dict>
 						<dict>
 							<key>match</key>
-							<string>(`[^`]+`|[_$a-zA-Z][_$a-zA-Z0-9]*(?:_[^\t .,;()\[\]{}'"`\w])(?=[(\t ])|[_$a-zA-Z][_$a-zA-Z0-9]*|[-?~&gt;&lt;^+=*&amp;%:!#|/@\\]+)</string>
+							<string>(`[^`]+`|[_$a-zA-Z][_$a-zA-Z0-9]*(?:_[^\t _.,;()\[\]{}'"`\w]+)(?=[(\t ])|[_$a-zA-Z][_$a-zA-Z0-9]*|[-?~&gt;&lt;^+=*&amp;%:!#|/@\\]+)</string>
 							<key>name</key>
 							<string>entity.name.function</string>
 						</dict>
@@ -848,10 +861,6 @@
 							<string>#class-parameter-list</string>
 						</dict>
 						<dict>
-							<key>include</key>
-							<string>#type-spec</string>
-						</dict>
-						<dict>
 							<key>match</key>
 							<string>(`[^`]+`|[_$a-zA-Z][_$a-zA-Z0-9]*(?:_[^\t .,;()\[\]{}'"`\w])(?=[(\t ])|[_$a-zA-Z][_$a-zA-Z0-9]*|[-?~&gt;&lt;^+*%:!#|/@\\]+)</string>
 							<key>name</key>
@@ -921,6 +930,10 @@
 						<dict>
 							<key>include</key>
 							<string>#param_list_decl</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#parameter-declaration</string>
 						</dict>
 						<dict>
 							<key>include</key>
@@ -1058,7 +1071,7 @@
 						</dict>
 						<dict>
 							<key>include</key>
-							<string>#parameter</string>
+							<string>#parameter-declaration</string>
 						</dict>
 						<dict>
 							<key>include</key>
@@ -1495,41 +1508,39 @@
 				</dict>
 			</array>
 		</dict>
-		<key>parameter</key>
+		<key>parameter-declaration</key>
 		<dict>
+			<key>begin</key>
+			<string>(?x)
+               (`[^`]+`
+               | [_$a-z][_$a-zA-Z0-9]*(?:_[-?~&gt;&lt;^+=*&amp;%:!#|/@\\]+\s)?
+               | [-?~&gt;&lt;^+*&amp;%:!#|/@\\][-?~&gt;&lt;^+=*&amp;%:!#|/@\\]*\s
+               | =[-?~&gt;&lt;^+*&amp;%:!#|/@\\]+\s
+               )
+               (?=\s*(:)(?![-?~&gt;&lt;^+=*&amp;%:!#|/@\\]|\s*_\*))
+              </string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>variable.parameter.scala</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.separator.colon.scala</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(?=$\n?|,|\)|=(?![[-?~&gt;&lt;^+=*&amp;%:!#|/@\\]]))</string>
+			<key>name</key>
+			<string>meta.parameter.declaration</string>
 			<key>patterns</key>
 			<array>
 				<dict>
-					<key>captures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>variable.parameter.scala</string>
-						</dict>
-						<key>2</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.separator.colon.scala</string>
-						</dict>
-						<key>3</key>
-						<dict>
-							<key>name</key>
-							<string>storage.type.scala</string>
-						</dict>
-					</dict>
-					<key>comment</key>
-					<string>We do not match param names that start with a Capitol letter</string>
-					<key>match</key>
-					<string>(?x)
-                   (`[^`]+`
-                   | [_$a-z][_$a-zA-Z0-9]*(?:_[-?~&gt;&lt;^+*%:!#|/@\\]+)?
-                   | [-?~&gt;&lt;^+*%:!#|/@\\]+
-                   )
-                   (?:\s*(:)(?![-:+=!&lt;&gt;^]|\s*_\*))
-                   \s*
-                   ([A-Z][\w]*)
-                  </string>
+					<key>include</key>
+					<string>#type-spec</string>
 				</dict>
 			</array>
 		</dict>
