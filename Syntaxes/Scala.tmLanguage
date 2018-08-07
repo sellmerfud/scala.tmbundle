@@ -936,10 +936,6 @@
 							<key>name</key>
 							<string>variable.other.declaration.scala</string>
 						</dict>
-						<dict>
-							<key>include</key>
-							<string>#decl_separator</string>
-						</dict>
 					</array>
 				</dict>
 				<dict>
@@ -1077,10 +1073,6 @@
 							<string>(`[^`]+`|[_$a-zA-Z][_$a-zA-Z0-9]*(?:_[^\t .,;()\[\]{}'"`\w])(?=[(\t ])|[_$a-zA-Z][_$a-zA-Z0-9]*|[-?~&gt;&lt;^+*%:!#|/@\\]+)</string>
 							<key>name</key>
 							<string>variable.other.declaration.scala</string>
-						</dict>
-						<dict>
-							<key>include</key>
-							<string>#decl_separator</string>
 						</dict>
 					</array>
 				</dict>
@@ -2255,7 +2247,7 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>\b([A-Z][\w]*)\b</string>
+					<string>\b(\w+)\b</string>
 				</dict>
 				<key>type-separator</key>
 				<dict>
