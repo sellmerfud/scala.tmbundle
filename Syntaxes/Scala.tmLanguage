@@ -733,7 +733,7 @@
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>$\n?|(=)</string>
+					<string>$\n?|(=)(?![[-?~&gt;&lt;^+=*&amp;%:!#|/@\\]])</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>1</key>
@@ -768,7 +768,7 @@
 						</dict>
 						<dict>
 							<key>match</key>
-							<string>(`[^`]+`|[_$a-zA-Z][_$a-zA-Z0-9]*(?:_[^\t .,;()\[\]{}'"`\w])(?=[(\t ])|[_$a-zA-Z][_$a-zA-Z0-9]*|[-?~&gt;&lt;^+*%:!#|/@\\]+)</string>
+							<string>(`[^`]+`|[_$a-zA-Z][_$a-zA-Z0-9]*(?:_[^\t .,;()\[\]{}'"`\w])(?=[(\t ])|[_$a-zA-Z][_$a-zA-Z0-9]*|[-?~&gt;&lt;^+=*&amp;%:!#|/@\\]+)</string>
 							<key>name</key>
 							<string>entity.name.function</string>
 						</dict>
@@ -1444,7 +1444,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>[-*&amp;|@%~?+:=!&lt;&gt;^]+</string>
+					<string>[-*&amp;|@%~+:=!&lt;&gt;^]+</string>
 					<key>name</key>
 					<string>keyword.operator.scala</string>
 				</dict>
