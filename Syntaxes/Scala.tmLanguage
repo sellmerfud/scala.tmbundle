@@ -173,10 +173,6 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#constants</string>
-				</dict>
-				<dict>
-					<key>include</key>
 					<string>#scala-symbol</string>
 				</dict>
 				<dict>
@@ -198,6 +194,10 @@
 				<dict>
 					<key>include</key>
 					<string>#type-params</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#constants</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -516,10 +516,6 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#constants</string>
-				</dict>
-				<dict>
-					<key>include</key>
 					<string>#scala-symbol</string>
 				</dict>
 				<dict>
@@ -541,6 +537,10 @@
 				<dict>
 					<key>include</key>
 					<string>#type-params</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#constants</string>
 				</dict>
 				<dict>
 					<key>include</key>
