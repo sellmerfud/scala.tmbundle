@@ -238,7 +238,7 @@
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>(?=$\n?|,|\)|=&gt;(?![[-?~&gt;&lt;^+=*&amp;%:!#|/@\\]]))</string>
+			<string>(?=$\n?|,|\bif\b|\)|=&gt;(?![[-?~&gt;&lt;^+=*&amp;%:!#|/@\\]]))</string>
 			<key>name</key>
 			<string>meta.case-parameter.declaration</string>
 			<key>patterns</key>
