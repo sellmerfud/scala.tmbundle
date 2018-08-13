@@ -101,22 +101,22 @@
 				<key>3</key>
 				<dict>
 					<key>name</key>
-					<string>meta.assertion.look-ahead.regexp.java</string>
+					<string>keyword.other.assertion.look-ahead.regexp.java</string>
 				</dict>
 				<key>4</key>
 				<dict>
 					<key>name</key>
-					<string>meta.assertion.negative-look-ahead.regexp.java</string>
+					<string>keyword.other.assertion.negative-look-ahead.regexp.java</string>
 				</dict>
 				<key>5</key>
 				<dict>
 					<key>name</key>
-					<string>meta.assertion.look-behind.regexp.java</string>
+					<string>keyword.other.assertion.look-behind.regexp.java</string>
 				</dict>
 				<key>6</key>
 				<dict>
 					<key>name</key>
-					<string>meta.assertion.negative-look-behind.regexp.java</string>
+					<string>keyword.other.assertion.negative-look-behind.regexp.java</string>
 				</dict>
 			</dict>
 			<key>end</key>
