@@ -862,6 +862,12 @@
 						</dict>
 						<dict>
 							<key>match</key>
+							<string>\b(private|protected)\b</string>
+							<key>name</key>
+							<string>storage.modifier.access.scala</string>
+						</dict>
+						<dict>
+							<key>match</key>
 							<string>(`[^`]+`|[_$a-zA-Z][_$a-zA-Z0-9]*(?:_[^\t .,;()\[\]{}'"`\w])(?=[(\t ])|[_$a-zA-Z][_$a-zA-Z0-9]*|[-?~&gt;&lt;^+*%:!#|/@\\]+)</string>
 							<key>name</key>
 							<string>entity.name.type.class.scala</string>
