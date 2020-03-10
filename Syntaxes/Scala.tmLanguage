@@ -129,7 +129,7 @@
                  to indicated a function type.  But case statements use =&gt; to
                  terminate the match expression and thus do not allow function types.</string>
 			<key>end</key>
-			<string>(=&gt;)|(if)</string>
+			<string>(=&gt;)|(\bif\b)</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
@@ -1539,7 +1539,7 @@
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>(?=$\n?|,|\)|=(?![[-?~&gt;&lt;^+=*&amp;%:!#|/@\\]]))</string>
+			<string>(?=$\n?|//|,|\)|=(?![[-?~&gt;&lt;^+=*&amp;%:!#|/@\\]]))</string>
 			<key>name</key>
 			<string>meta.parameter.declaration</string>
 			<key>patterns</key>
